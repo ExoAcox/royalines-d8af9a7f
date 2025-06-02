@@ -1,0 +1,21 @@
+{
+    "semi": true,
+    "tabWidth": 4,
+    "trailingComma": "es5",
+    "printWidth": 150,
+    "importOrder": [
+        "^@libs/(.*)$",
+        "^@api/(.*)$",
+        "^@hooks/(.*)$",
+        "^@functions/(.*)$",
+        "^@constants/(.*)$",
+        "^@images/(.*)$",
+        "^@pages/(.*)$",
+        "^@features/(.*)$",
+        "^@components/(.*)$",
+        "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "plugins": ["@trivago/prettier-plugin-sort-imports"]
+}

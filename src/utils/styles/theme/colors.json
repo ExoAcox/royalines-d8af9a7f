@@ -1,0 +1,14 @@
+{
+    "primary": "#EBA83A",
+    "grey-40": "#D9DDE3",
+    "grey-60": "#B1B5BA",
+    "grey-70": "#5C5E61",
+    "grey-80": "#5C5E61",
+    "grey-90": "#2E3032",
+    "grey-100": "#5C5E61",
+    "error-60": "#B1B5BA",
+    "error-70": "#5C5E61",
+    "error-80": "#D92D20",
+    "error-90": "#2E3032",
+    "error-100": "#5C5E61"
+}
