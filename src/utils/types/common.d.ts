@@ -28,9 +28,6 @@ type Dictionary = Record<string, Payload>;
 
 interface Page {
     device: Device;
-    dict: Dictionary;
-    globalDict: Dictionary;
-    locale: Locale;
 }
 
 interface Server {

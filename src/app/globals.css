@@ -1,26 +1,121 @@
 @import "tailwindcss";
+@plugin "tailwindcss-debug-screens";
+
+@theme {
+  --font-sans: var(--font-inter);
+
+  --color-primary: #EBA83A;
+  --color-grey-40: #D9DDE3;
+  --color-grey-60: #B1B5BA;
+  --color-grey-70: #8C8F93;
+  --color-grey-80: #5C5E61;
+  --color-grey-90: #2E3032;
+  --color-grey-100: #262829;
+  --color-error-60: #B1B5BA;
+  --color-error-70: #5C5E61;
+  --color-error-80: #D92D20;
+  --color-error-90: #2E3032;
+  --color-error-100: #5C5E61;
+  --color-base-black: "#27272A";
+  --color-base-dark: "#0A142F";
+  --color-border: "#EBEBF0";
+
+  --text-cl: 1rem;
+  --text-cl--line-height: 1rem;
+  --text-cs: .625rem;
+  --text-cs--line-height: .9375rem;
+  --text-bl: 1.125rem;
+  --text-bl--line-height: 1.6875rem;
+  --text-mbm: .875rem;
+  --text-mbm--line-height: 1.25rem;
+  --text-mbs: .75rem;
+  --text-mbs--line-height: 1.125rem;
+
+  --spacing-4.5: 1.125rem;
+  --spacing-5.5: 1.375rem;
+  --spacing-9: 2.25rem;
+  --spacing-17: 4.25rem;
+  --spacing-18: 4.5rem;
+  --spacing-max: 1280px;
+
+  --breakpoint-xs: 359px;
+  --breakpoint-sm: 579px;
+  --breakpoint-md: 767px;
+  --breakpoint-lg: 1023px;
+  --breakpoint-xl: 1279px;
+  --breakpoint-2xl: 1535px;
+
+  --animate-modal: fade 0.3s;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body {
+  background: var(--background);
+  color: var(--color-base-black);
+  /* font-family: Inter, Arial, Helvetica, sans-serif; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+h5 {
+  font-size: var(--text-bl);
+  font-weight: bold;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body>* {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #aaacaf;
+    border-radius: 10px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+label {
+  cursor: inherit;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition-delay: 9999s;
+  transition-delay: 9999s;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }

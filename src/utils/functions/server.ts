@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { UAParser } from "ua-parser-js";
+// import { UAParser } from "ua-parser-js";
 
 export const getDevice = async () => {
     if (typeof process === "undefined") {
@@ -11,7 +11,9 @@ export const getDevice = async () => {
     const { get } = await headers();
     const ua = get("user-agent");
 
-    const device = new UAParser(ua || "").getDevice();
+    // const device = new UAParser(ua || "").getDevice();
 
-    return device.type ?? "desktop";
+    // return device.type ?? "desktop";
+
+    return "desktop" as Device;
 };

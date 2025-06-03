@@ -1,0 +1,5 @@
+{
+    "search.useParentIgnoreFiles": true,
+    "editor.formatOnSave": true,
+    "tailwindCSS.experimental.configFile": "src/app/globals.css"
+}

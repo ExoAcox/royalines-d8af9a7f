@@ -38,11 +38,11 @@
       "@public/*": [
         "./public/*"
       ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
       "@functions/*": [
         "./src/utils/functions/*"
-      ],
-      "@styles/*": [
-        "./src/utils/styles/*"
       ],
       "@hooks/*": [
         "./src/utils/hooks/*"

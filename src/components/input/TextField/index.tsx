@@ -36,7 +36,7 @@ const TextField: React.FC<TextField> = ({
 
     const classNameFinal = useMemo(() => {
         return tw(
-            `h-12 border border-grey-60 w-full flex gap-3 justify-between items-center p-3 rounded-xl`,
+            `h-12 border border-grey-60 w-full flex gap-3 justify-between items-center px-4 rounded-lg`,
             disabled && "bg-secondary-20",
             error && "border-error-400",
             className
@@ -45,7 +45,7 @@ const TextField: React.FC<TextField> = ({
 
     return (
         <div className={tw(parentClassName)}>
-            <LabelInput className="block">{label} <When condition="required"><span className="text-red-80">*</span></When></LabelInput>
+            <LabelInput className="block" required={required}>{label}</LabelInput>
             <div className={classNameFinal}>
                 {prefix}
                 <input

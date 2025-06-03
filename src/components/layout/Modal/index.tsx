@@ -5,6 +5,8 @@ import { createPortal } from "react-dom";
 
 import { tw } from "@functions/style";
 
+import "./styles.scss"
+
 interface Props {
     visible: boolean;
     children: ReactNode;
