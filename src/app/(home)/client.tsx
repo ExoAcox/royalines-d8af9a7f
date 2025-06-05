@@ -6,7 +6,7 @@ import Image from "next/image"
 
 import { MainContent, TopNavbar, Footer } from "@features/home/components";
 
-import Background from "@images/bitmap/background_kabah_2.png"
+import Background from "@images/bitmap/background_kabah_2.jpg"
 import { SelectAirportModal } from "@features/choose_flight/components";
 
 
