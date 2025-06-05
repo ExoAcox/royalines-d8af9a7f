@@ -2,7 +2,6 @@
 
 import { Responsive, Wrapper } from "@components/layout"
 import { SeatPicker, SeatSidebar, TopBar } from "@features/choose_seat/components";
-import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { produce } from "immer"
 
@@ -86,16 +85,22 @@ const ChooseSeat: React.FC<Page> = ({ }) => {
         setPassengers(passengers_)
 
         const emptyIndex = passengers_.findIndex(passenger => !passenger.seat)
-        setPassengerChoosenId(emptyIndex >= 0 ? passengers[emptyIndex].id : null)
+        if (emptyIndex >= 0) {
+            setPassengerChoosenId(passengers[emptyIndex].id)
+        }
+
     }
 
 
     return <Wrapper navbarClassName="shadow-none">
         <TopBar />
-        <Responsive className="p-0">
+
+        <Responsive className="p-0 pt-[4.5rem]">
             <div className="flex">
                 <div className="fixed w-[31.25rem] h-[calc(100dvh-6rem-4.5rem)] overflow-scroll">
-                    <SeatSidebar passengers={passengers} passengerChoosenId={passengerChoosenId} onClick={setPassengerChoosenId} />
+                    <SeatSidebar passengers={passengers} passengerChoosenId={passengerChoosenId} onClick={(passengerId) => {
+                        setPassengerChoosenId(passengerId === passengerChoosenId ? null : passengerId)
+                    }} />
                 </div>
                 <div className="w-[31.25rem]" />
                 <div className="flex-1" >

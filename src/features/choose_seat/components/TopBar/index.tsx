@@ -10,7 +10,7 @@ interface Props {
 }
 
 const TopBar: React.FC<Props> = ({ }) => {
-    return <Responsive className="bg-white" parentClassName="border-b">
+    return <Responsive className="bg-white" parentClassName="border-b fixed w-full">
         <div className="flex items-center gap-3 h-[4.5rem]">
             <button className="flex items-center gap-2">
                 <GoArrowLeft />

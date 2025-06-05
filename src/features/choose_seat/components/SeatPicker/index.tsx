@@ -53,7 +53,7 @@ const SeatPicker: React.FC<Props> = ({ seats, occupied_seats, passengers, onSeat
     }
 
 
-    return <div className="flex justify-center pt-12">
+    return <div className="flex justify-center py-12">
         <div className="bg-white flex flex-col gap-6 relative p-4">
             {seats.layouts.map((layout, layoutIndex) => {
                 const lastLayoutIndex = seats.layouts.slice(0, layoutIndex).reduce((acc, current) => acc + current.row, 0)
