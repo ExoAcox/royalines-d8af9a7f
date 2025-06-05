@@ -2,7 +2,6 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import "nprogress/nprogress.css";
 
-import { Button } from "@components/button"
 
 import { ToastContainer } from 'react-toastify';
 

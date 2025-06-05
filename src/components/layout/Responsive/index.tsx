@@ -13,7 +13,7 @@ interface Props {
 const Responsive: React.FC<Props> = ({ children, className, parentClassName, parentStyle, id }) => {
     return (
         <div className={tw("relative scroll-mt-[4.25rem]", parentClassName)} style={parentStyle} id={id}>
-            <div className={tw("mx-auto 2xl:px-8 sm:px-4 max-w-max", className)}>{children}</div>
+            <div className={tw("mx-auto px-8 max-w-999", className)}>{children}</div>
         </div>
     );
 };

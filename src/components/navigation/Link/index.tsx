@@ -2,7 +2,7 @@
 
 import Link_ from "next/link";
 
-import { useRouterEvent } from "@hooks/useRouterEvent";
+import { useRouterEvent } from "@hooks/useRouter";
 
 interface Props {
     children: React.ReactNode;

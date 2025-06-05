@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter as useRouter_, useSearchParams } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type StartRouterChangeContextValue = {
@@ -20,7 +20,7 @@ const RouterEventProvider: React.FC<RouterEventProviderProps> = ({ children, onS
     const [isChanging, setIsChanging] = useState(false);
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const router = useRouter();
+    const router = useRouter_();
 
     useEffect(() => setIsChanging(false), [pathname, searchParams]);
 

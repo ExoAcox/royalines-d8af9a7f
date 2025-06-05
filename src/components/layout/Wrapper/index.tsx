@@ -4,6 +4,7 @@ import { Else, If, Then, When } from "react-if";
 import { tw } from "@functions/style";
 
 import Navbar from "./components/Navbar";
+import Responsive from "../Responsive";
 
 interface Props {
     children: React.ReactNode;
@@ -30,8 +31,7 @@ const Wrapper: React.FC<Props> = ({ transparent = true, children, title, classNa
                     centered && "flex items-center justify-center",
                     className
                 )}
-            >
-                {children}
+            >{children}
             </main>
         </div>
     );

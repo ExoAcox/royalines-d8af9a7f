@@ -4,7 +4,7 @@ import { tw } from "@functions/style";
 import { LabelInput, ErrorInput } from "@components/text";
 import { When } from "react-if";
 export interface TextField extends BasicInput {
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     type?: "text" | "number";
     controller?: object;
@@ -36,7 +36,7 @@ const TextField: React.FC<TextField> = ({
 
     const classNameFinal = useMemo(() => {
         return tw(
-            `h-12 border border-grey-60 w-full flex gap-3 justify-between items-center px-4 rounded-lg`,
+            `h-10 border border-base-border text-sm w-full flex gap-3 justify-between items-center px-4 rounded-sm`,
             disabled && "bg-secondary-20",
             error && "border-error-400",
             className

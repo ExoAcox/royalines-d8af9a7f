@@ -6,7 +6,7 @@ import { Suspense, useCallback } from "react";
 
 import queryClient from "@libs/react-query";
 
-import RouterEventProvider from "@hooks/useRouterEvent";
+import RouterEventProvider from "@hooks/useRouter";
 
 NProgress.configure({ showSpinner: false });
 

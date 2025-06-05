@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ transparent, className }) => {
     return (
         <nav
             className={tw(
-                "fixed top-0 left-0 right-0 z-[3] overflow-visible transition duration bg-white",
+                "fixed top-0 left-0 right-0 z-[3] overflow-visible transition duration bg-white shadow",
                 className,
                 isTransparent ? "" : "shadow"
             )}
@@ -66,10 +66,12 @@ const Navbar: React.FC<NavbarProps> = ({ transparent, className }) => {
                     <Link href="/">Home</Link>
                     <Link href="/">About</Link>
                     <Link href="/">Contact</Link>
+                    {/* <Link href="/">My Flight</Link>
+                    <Link href="/">Transaction History</Link> */}
                     <Button variant="ghost" className="min-h-12 min-w-36">
                         Login
                     </Button>
-                    <Button className="min-h-12 min-w-36">
+                    <Button className="-ml-2 min-h-12 min-w-36">
                         Register
                     </Button>
                 </div>

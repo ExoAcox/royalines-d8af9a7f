@@ -37,7 +37,7 @@ const getVariant = (variant: string, color: string) => {
         case "nude":
             return `bg-transparent border-transparent ${color === "primary" ? "text-primary" : "text-primary"}`;
         default:
-            return `disabled:bg-grey-40`;
+            return `text-white disabled:bg-grey-40`;
     }
 };
 
@@ -91,7 +91,7 @@ const Button: React.FC<Button> = ({
             <div className={tw("flex items-center gap-1", labelClassName)}>{loading ? "Loading ..." : children}</div>
             {loading && (
                 <Spinner
-                    color={variant === "filled" ? "#fff" : color === "primary" ? "#EBA83A" : "#EBA83A"}
+                    color={variant === "filled" ? "#fff" : color === "primary" ? "var(--color-primary)" : "var(--color-primary)"}
                     className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                     size={buttonRef.current?.offsetHeight ? (buttonRef.current?.offsetHeight / 10) * 6 : undefined}
                 />

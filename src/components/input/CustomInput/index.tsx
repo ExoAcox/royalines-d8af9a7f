@@ -11,7 +11,7 @@ const Input: React.FC<Props> = ({ Icon, children, label }) => {
         <Icon className="w-5 h-5 mt-1" />
         <div className="flex flex-col">
             <label className="text-mbs">{label}</label>
-            <div className="text-mbm font-bold text-grey-100">{children}</div>
+            <div className="text-mbm font-bold text-grey-100 mt-1">{children}</div>
         </div>
     </div>
 
