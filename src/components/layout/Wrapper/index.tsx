@@ -19,7 +19,7 @@ interface Props {
 const Wrapper: React.FC<Props> = ({ transparent = true, children, title, className, navbarClassName, centered }) => {
 
     return (
-        <div className={tw("flex flex-col")}>
+        <div className={tw("h-screen max-w-screen flex flex-col")}>
             <Head>
                 <title>{title ? `${title} | GEARS` : "GEARS"}</title>
             </Head>
@@ -27,7 +27,7 @@ const Wrapper: React.FC<Props> = ({ transparent = true, children, title, classNa
 
             <main
                 className={tw(
-                    "relative flex-1 bg-background min-w-[360px] overflow-hidden pt-[6rem]",
+                    "relative flex-1 bg-background min-w-[1080px] overflow-hidden pt-[6rem]",
                     centered && "flex items-center justify-center",
                     className
                 )}

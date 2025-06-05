@@ -36,7 +36,7 @@ interface Props {
 }
 
 const SideFilter: React.FC<Props> = ({ }) => {
-    return <div className="flex flex-col gap-4 h-full">
+    return <div className="flex flex-col gap-4 w-[31.25rem]">
         <div className="bg-white shadow">
             <div className="flex items-center justify-between p-4 border-b border-base-border">
                 <h4>Filter</h4>

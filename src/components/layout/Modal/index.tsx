@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 
 import { tw } from "@functions/style";
 
-import "./styles.scss"
+import "./styles.css"
 
 interface Props {
     visible: boolean;

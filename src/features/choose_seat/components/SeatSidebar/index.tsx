@@ -17,7 +17,7 @@ interface Props {
 
 
 const SeatSidebar: React.FC<Props> = ({ passengers, onClick, passengerChoosenId }) => {
-    return <div className="p-2 bg-white h-full">
+    return <div className="p-2 bg-white w-[31.25rem] h-full">
         <div className="flex items-center justify-between">
             <label className="font-bold">Seat Selected</label>
             <Chip><PiSeatFill /> Remaining Seats: 100</Chip>

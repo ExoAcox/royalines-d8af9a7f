@@ -6,11 +6,6 @@ import { useEffect, useState } from "react";
 import { produce } from "immer"
 
 
-
-
-
-
-
 const seat_data = {
     numbering: [1, 2, 3, 4, 10, 11, 12, 99, 21, 22, 23, 24, 25],
     layouts: [{
@@ -20,7 +15,7 @@ const seat_data = {
     },
     {
         alphabet: ["X", "Y", "Z", "M", "N", "O", "Q", "V"],
-        column: [2, 2, 2, 2],
+        column: [2, 2, 2],
         row: 3
     },
     {
@@ -36,15 +31,6 @@ const seat_data = {
 }
 
 const occupied_seats = ["G12", "B2", "X10", "X4", "O3", 'D1', 'E1', 'O10']
-
-
-
-
-
-
-
-
-
 
 const ChooseSeat: React.FC<Page> = ({ }) => {
     const [passengers, setPassengers] = useState<{ name: string, id: number, seat: string }[]>([{
@@ -70,7 +56,7 @@ const ChooseSeat: React.FC<Page> = ({ }) => {
     }])
 
     const [passengerChoosenId, setPassengerChoosenId] = useState<number | null>(null)
-    console.log(passengerChoosenId)
+
     useEffect(() => {
         setPassengerChoosenId(passengers[0].id)
     }, [])
@@ -91,23 +77,21 @@ const ChooseSeat: React.FC<Page> = ({ }) => {
 
     }
 
-
     return <Wrapper navbarClassName="shadow-none">
-        <TopBar />
+        <div className="flex flex-col h-full">
+            <TopBar />
+            <div className="flex-1 overflow-scroll">
+                <Responsive className="p-0 flex">
+                    <div className="h-[calc(100dvh-10.75rem)] sticky top-0">
+                        <SeatSidebar passengers={passengers} passengerChoosenId={passengerChoosenId} onClick={(passengerId) => {
+                            setPassengerChoosenId(passengerId === passengerChoosenId ? null : passengerId)
+                        }} />
+                    </div>
 
-        <Responsive className="p-0 pt-[4.5rem]">
-            <div className="flex">
-                <div className="fixed w-[31.25rem] h-[calc(100dvh-6rem-4.5rem)] overflow-scroll">
-                    <SeatSidebar passengers={passengers} passengerChoosenId={passengerChoosenId} onClick={(passengerId) => {
-                        setPassengerChoosenId(passengerId === passengerChoosenId ? null : passengerId)
-                    }} />
-                </div>
-                <div className="w-[31.25rem]" />
-                <div className="flex-1" >
                     <SeatPicker seats={seat_data} occupied_seats={occupied_seats} passengers={passengers} onSeatSelect={handleSeatSelect} passengerChoosenId={passengerChoosenId} />
-                </div>
+                </Responsive>
             </div>
-        </Responsive>
+        </div>
     </Wrapper>
 }
 

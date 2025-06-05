@@ -41,14 +41,15 @@
   --spacing-18: 4.5rem;
   --spacing-999: 1920px;
 
-  --breakpoint-xs: 359px;
-  --breakpoint-sm: 579px;
-  --breakpoint-md: 767px;
-  --breakpoint-lg: 1023px;
-  --breakpoint-xl: 1279px;
-  --breakpoint-2xl: 1535px;
-
+  --breakpoint-*: initial;
 }
+
+@custom-variant xs (@media (max-width: 359px));
+@custom-variant sm (@media (max-width: 579px));
+@custom-variant md (@media (max-width: 767px));
+@custom-variant lg (@media (max-width: 1023px));
+@custom-variant xl (@media (max-width: 1279px));
+@custom-variant 2x (@media: (max-width: 1535px));
 
 :root {
   --background: #F5F5FA;
@@ -141,4 +142,9 @@ button {
 
 button:disabled {
   cursor: default;
+}
+
+#nprogress .bar {
+  height: 6px !important;
+  background: var(--color-primary) !important;
 }

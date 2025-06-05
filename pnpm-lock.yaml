@@ -93,9 +93,6 @@ importers:
       postcss:
         specifier: ^8.5.4
         version: 8.5.4
-      sass:
-        specifier: ^1.89.1
-        version: 1.89.1
       tailwindcss-debug-screens:
         specifier: ^3.0.1
         version: 3.0.1(tailwindcss@4.1.6)
@@ -4677,6 +4674,7 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
+    optional: true
 
   chownr@3.0.0: {}
 
@@ -5393,7 +5391,8 @@ snapshots:
 
   immer@10.1.1: {}
 
-  immutable@5.1.2: {}
+  immutable@5.1.2:
+    optional: true
 
   import-fresh@3.3.1:
     dependencies:
@@ -5933,7 +5932,8 @@ snapshots:
 
   react@19.1.0: {}
 
-  readdirp@4.1.2: {}
+  readdirp@4.1.2:
+    optional: true
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -6038,6 +6038,7 @@ snapshots:
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
+    optional: true
 
   scheduler@0.26.0: {}
 

@@ -1,7 +1,11 @@
 import { tw } from "@functions/style"
 import { MdClose } from "react-icons/md"
 
+import Image from "next/image"
+
 import { When } from "react-if"
+
+import PlaneHead from "@images/bitmap/plane-head.png"
 
 interface BoxProps {
     occupied: boolean;
@@ -53,8 +57,9 @@ const SeatPicker: React.FC<Props> = ({ seats, occupied_seats, passengers, onSeat
     }
 
 
-    return <div className="flex justify-center py-12">
-        <div className="bg-white flex flex-col gap-6 relative p-4">
+    return <div className="flex flex-1 justify-center">
+        <div className="bg-white flex flex-col gap-6 relative p-4 mt-[16rem] pb-16">
+            <Image src={PlaneHead} alt="" className="absolute w-full left-1/2 -translate-x-1/2 top-0.5 -translate-y-full" />
             {seats.layouts.map((layout, layoutIndex) => {
                 const lastLayoutIndex = seats.layouts.slice(0, layoutIndex).reduce((acc, current) => acc + current.row, 0)
 
