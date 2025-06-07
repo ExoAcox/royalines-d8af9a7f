@@ -27,7 +27,7 @@ const Wrapper: React.FC<Props> = ({ transparent = true, children, title, classNa
 
             <main
                 className={tw(
-                    "relative flex-1 bg-background min-w-[1080px] overflow-hidden pt-[6rem]",
+                    "relative flex-1 bg-background min-w-[1080px] overflow-auto pt-[6rem]",
                     centered && "flex items-center justify-center",
                     className
                 )}

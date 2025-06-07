@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 
 import { tw } from "@functions/style";
 
-import { Image, Responsive } from "@components/layout";
+import { Responsive } from "@components/layout";
+import Image from "next/image"
 
-import Logo from "@images/bitmap/logo.png"
+import Logo from "@images/bitmap/logo-royalines.png"
 import { Link } from "@components/navigation";
 import { Button } from "@components/button";
 
@@ -48,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ transparent, className }) => {
     return (
         <nav
             className={tw(
-                "fixed top-0 left-0 right-0 z-[3] overflow-visible transition duration bg-white shadow",
+                "fixed top-0 left-0 right-0 z-[3] overflow-visible transition duration bg-white",
                 className,
                 isTransparent ? "" : "shadow"
             )}
@@ -58,23 +59,21 @@ const Navbar: React.FC<NavbarProps> = ({ transparent, className }) => {
         >
             <Responsive
                 parentClassName="h-[6rem] flex item-center relative z-[2] bg-transparent"
-                className={tw("flex w-full gap-6 sm:gap-4 bg-transparent px-8 max-w-none")}
+                className={tw("flex items-center gap-8 text-grey-80 w-full")}
 
             >
-                <Image src={Logo} alt="logo" height={54} />
-                <div className="ml-auto flex items-center gap-8 text-grey-80">
-                    <Link href="/">Home</Link>
-                    <Link href="/">About</Link>
-                    <Link href="/">Contact</Link>
-                    {/* <Link href="/">My Flight</Link>
-                    <Link href="/">Transaction History</Link> */}
-                    <Button variant="ghost" className="min-h-12 min-w-36">
-                        Login
-                    </Button>
-                    <Button className="-ml-2 min-h-12 min-w-36">
-                        Register
-                    </Button>
-                </div>
+                <Image src={Logo} alt="logo" className="h-10 w-[11.375rem] mr-auto" />
+                <Link href="/">Home</Link>
+                <Link href="/about">About</Link>
+                <Link href="/contact">Contact</Link>
+                {/* <Link href="/my_flight">My Flight</Link>
+                    <Link href="/transaction_history">Transaction History</Link> */}
+                <Button variant="ghost" className="min-h-12 min-w-36">
+                    Login
+                </Button>
+                <Button className="-ml-2 min-h-12 min-w-36">
+                    Register
+                </Button>
             </Responsive>
         </nav>
     );

@@ -1,0 +1,40 @@
+import { Responsive } from "@components/layout"
+import Image, { StaticImageData } from "next/image";
+
+import IconPlane from "@images/bitmap/icon-plane-big.png"
+import IconBaggage from "@images/bitmap/icon-baggage-big.png"
+import IconHotel from "@images/bitmap/icon-hotel-big.png"
+import IconVisa from "@images/bitmap/icon-visa-big.png"
+import IconCs from "@images/bitmap/icon-cs-big.png"
+
+interface CardProps {
+    children: string;
+    src: StaticImageData
+}
+
+const Card: React.FC<CardProps> = ({ children, src }) => {
+    return <div className="rounded-2xl bg-white px-4 py-8 flex-1 flex items-center gap-10 flex-col min-w-[25rem]">
+        <Image src={src} alt="icon" />
+        <span className="text-xl text-center font-semibold text-primary">{children}</span>
+    </div>
+}
+
+interface Props {
+
+}
+
+const WhatWeOffer: React.FC<Props> = ({ }) => {
+    return <Responsive parentClassName="bg-primary-bg" className="flex flex-col items-center pt-14 pb-10">
+        <h1 className="text-primary">What We Offer</h1>
+        <p className="font-semibold text-grey-80 mt-5 mb-6">With Royalines, your pilgrimage begins with peace of mind—on the ground and in the air. We are Your Royal Journey Solution to Umrah and beyond.</p>
+        <div className="flex flex-wrap gap-4 justify-center max-w-[90rem]">
+            <Card src={IconPlane}>Private Charter Flights to Jeddah or Medina</Card>
+            <Card src={IconBaggage}>Specialized Umrah Travel Packages</Card>
+            <Card src={IconHotel}>Easy Hotel Reservation</Card>
+            <Card src={IconVisa}>Visa Processing Assistance</Card>
+            <Card src={IconCs}>End-to-end travel coordination with 24/7 support</Card>
+        </div>
+    </Responsive>
+}
+
+export default WhatWeOffer

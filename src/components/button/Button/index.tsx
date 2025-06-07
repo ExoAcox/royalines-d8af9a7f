@@ -61,7 +61,7 @@ const Button: React.FC<Button> = ({
     const classNameFinal = useMemo(
         () =>
             tw(
-                `flex group shrink-0 cursor-pointer font-semibold items-center justify-center gap-2 whitespace-nowrap relative rounded-lg border w-fit h-fit px-3.5 py-2 overflow-hidden`,
+                `flex group shrink-0 font-semibold items-center justify-center gap-2 whitespace-nowrap relative rounded-lg border w-fit h-fit px-3.5 py-2 overflow-hidden`,
                 getColor(color),
                 getVariant(variant, color),
                 className

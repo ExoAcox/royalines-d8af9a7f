@@ -1,6 +1,6 @@
+import { BackButton } from "@components/button"
 import { FlightInfoCard } from "@components/card"
 import { Responsive } from "@components/layout"
-import { GoArrowLeft } from "react-icons/go"
 
 
 
@@ -13,7 +13,7 @@ const TopBar: React.FC<Props> = ({ }) => {
     return <Responsive className="bg-white" parentClassName="border-b">
         <div className="flex items-center gap-3 h-[4.5rem]">
             <button className="flex items-center gap-2">
-                <GoArrowLeft />
+                <BackButton />
                 <label className="text-2xl font-bold">Select seat number</label>
             </button>
             <div className="gap-3 flex items-center ml-auto pr-3 border-r">

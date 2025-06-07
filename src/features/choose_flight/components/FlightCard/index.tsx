@@ -34,7 +34,7 @@ const FlightCard: React.FC<Props> = ({ onClick }) => {
                 <label className="text-sm">Emirates Airlines</label>
                 <span className="text-grey-80 text-xs">EM-5489</span>
             </div>
-            <Chip className="ml-auto">Seats Available: 200 of 400</Chip>
+            <Chip className="ml-auto" disabled>Seats Available: 200 of 400</Chip>
             <Button className="h-8 text-xs" onClick={onClick}>Select</Button>
         </div>
     </div>

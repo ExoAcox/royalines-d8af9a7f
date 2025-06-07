@@ -1,10 +1,8 @@
 
 
+import { BackButton } from "@components/button";
 import { FlightInfoCard } from "@components/card"
-import { useRouterEvent } from "@hooks/useRouter";
-import { useRouter } from "next/navigation";
 
-import { GoArrowLeft } from "react-icons/go";
 
 
 interface Props {
@@ -12,17 +10,11 @@ interface Props {
 }
 
 const TripSummary: React.FC<Props> = ({ }) => {
-    const { routerChange } = useRouterEvent()
-    const router = useRouter()
 
-    const back = () => {
-        routerChange()
-        router.back()
-    }
 
     return <div className="bg-white rounded-t-2xl">
         <div className="flex items-center gap-2 p-3 border-b-2 border-base-border">
-            <GoArrowLeft className="w-6 h-6 cursor-pointer" onClick={back} />
+            <BackButton />
             <h5 className="font-semibold">Trip Summary</h5>
         </div>
         <div className="p-3">

@@ -17,10 +17,12 @@
   --color-success-70: #12B76A;
   --color-error-80: #D92D20;
   --color-warning-30: #FEF0C7;
+  --color-warning-70: #F79009;
   --color-blue-20: #ADE2FE;
   --color-base-black: #27272A;
   --color-base-dark: #0A142F;
   --color-base-border: #DDDDE3;
+  --color-base-background: #F5F5FA;
 
   --text-2xs: .625rem;
   --text-2xs--line-height: calc(1 / 0.625);
@@ -51,13 +53,9 @@
 @custom-variant xl (@media (max-width: 1279px));
 @custom-variant 2x (@media: (max-width: 1535px));
 
-:root {
-  --background: #F5F5FA;
-  --foreground: #171717;
-}
 
 body {
-  background: var(--background);
+  background: var(--color-base-background);
   color: var(--color-base-black);
 }
 
@@ -69,6 +67,10 @@ body {
   button {
     border-color: var(--color-base-border);
   }
+
+  tr {
+    border-color: var(--color-base-border);
+  }
 }
 
 h5 {
@@ -77,8 +79,26 @@ h5 {
 }
 
 h4 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+
+h3 {
   font-size: 1.75rem;
   line-height: 2.25rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 2.57rem;
   font-weight: bold;
 }
 
@@ -145,6 +165,6 @@ button:disabled {
 }
 
 #nprogress .bar {
-  height: 6px !important;
+  height: 5px !important;
   background: var(--color-primary) !important;
 }

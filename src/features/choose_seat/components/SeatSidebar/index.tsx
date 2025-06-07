@@ -20,7 +20,7 @@ const SeatSidebar: React.FC<Props> = ({ passengers, onClick, passengerChoosenId 
     return <div className="p-2 bg-white w-[31.25rem] h-full">
         <div className="flex items-center justify-between">
             <label className="font-bold">Seat Selected</label>
-            <Chip><PiSeatFill /> Remaining Seats: 100</Chip>
+            <Chip disabled><PiSeatFill /> Remaining Seats: 100</Chip>
         </div>
         <div className="flex flex-col gap-2 ml-4 mt-3">
             {passengers.map((passenger, index) => {

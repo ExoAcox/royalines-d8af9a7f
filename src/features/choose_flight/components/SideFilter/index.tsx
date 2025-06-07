@@ -39,7 +39,7 @@ const SideFilter: React.FC<Props> = ({ }) => {
     return <div className="flex flex-col gap-4 w-[31.25rem]">
         <div className="bg-white shadow">
             <div className="flex items-center justify-between p-4 border-b border-base-border">
-                <h4>Filter</h4>
+                <h3>Filter</h3>
                 <button className="text-primary text-xs font-semibold">Reset</button>
             </div>
             <div className="p-4">

@@ -1,13 +1,14 @@
 import { useMemo } from "react";
 import { tw } from "@functions/style";
 
-import { LabelInput, ErrorInput } from "@components/text";
-import { When } from "react-if";
+import { LabelInput, ErrorInput, ExampleInput } from "@components/text";
+
 export interface TextField extends BasicInput {
     value?: string | number;
     onChange?: (value: string) => void;
     type?: "text" | "number";
     controller?: object;
+    example?: string;
     inputClassName?: string;
     prefix?: React.ReactNode;
     suffix?: React.ReactNode;
@@ -21,6 +22,7 @@ const TextField: React.FC<TextField> = ({
     label,
     placeholder,
     type = "text",
+    example,
     className,
     parentClassName,
     inputClassName,
@@ -36,7 +38,7 @@ const TextField: React.FC<TextField> = ({
 
     const classNameFinal = useMemo(() => {
         return tw(
-            `h-10 border border-base-border text-sm w-full flex gap-3 justify-between items-center px-4 rounded-sm`,
+            `h-12 border border-grey-60 bg-white w-full flex gap-3 justify-between items-center px-3 rounded-lg`,
             disabled && "bg-secondary-20",
             error && "border-error-400",
             className
@@ -62,6 +64,7 @@ const TextField: React.FC<TextField> = ({
                 {suffix}
             </div>
             <ErrorInput error={error} />
+            <ExampleInput>{example}</ExampleInput>
         </div>
     );
 };
