@@ -14,7 +14,7 @@ const Register: React.FC<Page> = ({ }) => {
             <TextField label="Email" placeholder="Input your email" example="yourname@email.com" required />
             <PasswordField label="Password" placeholder="Input your password" required />
             <PasswordField label="Re-type password" placeholder="Re-input your password" required />
-            <Link href="/" className="w-full mt-2"><Button className="w-full">Register</Button></Link>
+            <Link href="/login" className="w-full mt-2"><Button className="w-full">Register</Button></Link>
         </form>
     </LoginWrapper>
 

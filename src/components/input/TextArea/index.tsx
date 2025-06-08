@@ -16,7 +16,7 @@ const TextArea: React.FC<TextAreaProps> = ({ value, onChange, label, placeholder
 
     const classNameFinal = useMemo(() => {
         return tw(
-            `border bg-primary-25 border-primary-200 w-full flex gap-0.5 justify-between items-center p-3 rounded-xl`,
+            `border border-grey-60 bg-white w-full flex gap-3 justify-between items-center px-3 py-2 rounded-lg`,
             disabled && "bg-secondary-20",
             error && "border-error-400",
             className

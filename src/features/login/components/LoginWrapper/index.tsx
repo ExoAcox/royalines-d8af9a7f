@@ -12,7 +12,7 @@ interface Props {
 
 
 const LoginWrapper: React.FC<Props> = ({ children, title }) => {
-    return <div className="relative py-24 px-18 min-h-dvh w-full flex justify-end">
+    return <div className="relative py-24 px-18 min-h-dvh w-full flex justify-end items-center">
         <Image src={Background} alt="" fill={true} className="absolute inset-0 object-cover" />
         <div className="absolute inset-0 z-[2] opacity-60" style={{ background: "linear-gradient(107.14deg, rgba(217, 217, 217, 0), #000000)" }} />
         <div className="w-[31.25rem] overflow-hiddenrelative z-[3] bg-white h-fit rounded-2xl" >

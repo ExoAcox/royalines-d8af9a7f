@@ -68,12 +68,16 @@ const Navbar: React.FC<NavbarProps> = ({ transparent, className }) => {
                 <Link href="/contact">Contact</Link>
                 {/* <Link href="/my_flight">My Flight</Link>
                     <Link href="/transaction_history">Transaction History</Link> */}
-                <Button variant="ghost" className="min-h-12 min-w-36">
-                    Login
-                </Button>
-                <Button className="-ml-2 min-h-12 min-w-36">
-                    Register
-                </Button>
+                <Link href="/login">
+                    <Button variant="ghost" className="min-h-12 min-w-36">
+                        Login
+                    </Button>
+                </Link>
+                <Link href="/register">
+                    <Button className="-ml-2 min-h-12 min-w-36">
+                        Register
+                    </Button>
+                </Link>
             </Responsive>
         </nav>
     );
