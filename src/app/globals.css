@@ -108,8 +108,6 @@ h1 {
   }
 }
 
-
-
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -124,7 +122,9 @@ body>* {
     background: #aaacaf;
     border-radius: 10px;
   }
+
 }
+
 
 label {
   cursor: inherit;

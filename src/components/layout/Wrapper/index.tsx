@@ -1,10 +1,8 @@
 import Head from "next/head";
-import { Else, If, Then, When } from "react-if";
 
 import { tw } from "@functions/style";
 
 import Navbar from "./components/Navbar";
-import Responsive from "../Responsive";
 
 interface Props {
     children: React.ReactNode;
@@ -16,18 +14,15 @@ interface Props {
     transparent?: boolean;
 }
 
-const Wrapper: React.FC<Props> = ({ transparent = true, children, title, className, navbarClassName, centered }) => {
+const Wrapper: React.FC<Props> = ({ transparent = true, children, className, navbarClassName, centered }) => {
 
     return (
-        <div className={tw("h-screen max-w-screen flex flex-col")}>
-            <Head>
-                <title>{title ? `${title} | GEARS` : "GEARS"}</title>
-            </Head>
+        <div className={tw("h-full w-full flex flex-col")}>
             <Navbar transparent={transparent} className={navbarClassName} />
 
             <main
                 className={tw(
-                    "relative flex-1 bg-background min-w-[1080px] overflow-auto pt-[6rem]",
+                    "relative flex-1 min-w-[1080px] overflow-auto pt-[6rem]",
                     centered && "flex items-center justify-center",
                     className
                 )}
