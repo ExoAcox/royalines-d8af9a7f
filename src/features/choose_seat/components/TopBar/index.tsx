@@ -18,7 +18,7 @@ const TopBar: React.FC<Props> = ({ }) => {
             </button>
             <div className="gap-3 flex items-center ml-auto pr-3 border-r">
                 <div className="w-10 h-10 bg-red-400 rounded" />
-                <label className="text-sm font-semibold">Emirates Airlines</label>
+                <label className="text-sm font-semibold">Royal Jet Aviation</label>
                 <span className="text-grey-80 text-2xs ml-auto">Economy</span>
             </div>
             <FlightInfoCard className="min-w-[24rem]" />

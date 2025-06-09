@@ -1,0 +1,29 @@
+import { create } from "zustand"
+
+export interface FilterFlightStore {
+    departure: string;
+    arrival: string;
+    airlines: string[];
+    sort: string;
+    priceFrom?: number;
+    priceTo?: number;
+}
+
+const defaultFilterFlightStore = {
+    departure: "",
+    arrival: "",
+    airlines: [],
+    sort: "lowest",
+    priceFrom: undefined,
+    priceTo: undefined
+}
+
+export const useFilterFlightStore = create<FilterFlightStore>((set) => ({
+    departure: defaultFilterFlightStore.departure,
+    arrival: defaultFilterFlightStore.arrival,
+    airlines: defaultFilterFlightStore.airlines,
+    sort: defaultFilterFlightStore.sort,
+    priceFrom: defaultFilterFlightStore.priceFrom,
+    priceTo: defaultFilterFlightStore.priceTo,
+    reset: () => set(defaultFilterFlightStore),
+}));

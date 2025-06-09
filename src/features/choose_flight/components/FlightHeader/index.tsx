@@ -6,6 +6,8 @@ import { ChooseFlightStore } from "@features/choose_flight/stores/chooseFlightSt
 import { Button } from "@components/button";
 
 import { LuArrowDownUp } from "react-icons/lu";
+import { useRouterEvent } from "@hooks/useRouter";
+import { useRouter } from "next/navigation";
 
 
 
@@ -14,9 +16,17 @@ interface Props {
 }
 
 const FlightHeader: React.FC<Props> = ({ data }) => {
+    const { routerChange } = useRouterEvent()
+    const router = useRouter()
+
+    const back = () => {
+        routerChange()
+        router.back()
+    }
+
     return <div className="shadow rounded-2xl">
         <div className="bg-primary relative text-white flex flex-col gap-6 items-center pt-6 pb-4 rounded-t-2xl">
-            <button className="absolute flex-center top-4 left-4 w-8 h-8 border rounded-full"><IoIosArrowBack /></button>
+            <button className="absolute flex-center top-4 left-4 w-8 h-8 border rounded-full" onClick={back}><IoIosArrowBack /></button>
             <label className="font-semibold flex items-center gap-2">{data.from} <FaArrowRight /> {data.to}</label>
             <div className="flex items-center gap-3">
                 <FaPlaneDeparture className="w-6 h-6" />

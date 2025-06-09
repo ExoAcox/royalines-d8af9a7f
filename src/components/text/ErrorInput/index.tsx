@@ -15,7 +15,7 @@ const ErrorInput: React.FC<Props> = ({ error, className }) => {
 
     if (!error) return null;
     return (
-        <span className={tw("flex items-center gap-1 mt-1 text-cl text-error-80", className)}>
+        <span className={tw("flex items-center gap-1 mt-1 text-xs text-error-80", className)}>
             <TiWarningOutline /> {errorMessage}
         </span>
     );

@@ -18,7 +18,7 @@ const TextArea: React.FC<TextAreaProps> = ({ value, onChange, label, placeholder
         return tw(
             `border border-grey-60 bg-white w-full flex gap-3 justify-between items-center px-3 py-2 rounded-lg`,
             disabled && "bg-secondary-20",
-            error && "border-error-400",
+            error && "border-error-80",
             className
         );
     }, [disabled, error, className]);

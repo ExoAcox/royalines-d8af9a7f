@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { tw } from "@functions/style";
 
 import { LabelInput, ErrorInput, ExampleInput } from "@components/text";
+import { Else, If, Then, When } from "react-if";
 
 export interface TextField extends BasicInput {
     value?: string | number;
@@ -40,7 +41,7 @@ const TextField: React.FC<TextField> = ({
         return tw(
             `h-12 border border-grey-60 bg-white w-full flex gap-3 justify-between items-center px-3 rounded-lg`,
             disabled && "bg-secondary-20",
-            error && "border-error-400",
+            error && "border-error-80",
             className
         );
     }, [disabled, error, className]);
@@ -63,8 +64,11 @@ const TextField: React.FC<TextField> = ({
                 />
                 {suffix}
             </div>
-            <ErrorInput error={error} />
-            <ExampleInput>{example}</ExampleInput>
+            <If condition={error}>
+                <Then><ErrorInput error={error} /></Then>
+                <Else><ExampleInput>{example}</ExampleInput></Else>
+            </If>
+
         </div>
     );
 };

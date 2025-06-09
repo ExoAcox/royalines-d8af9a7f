@@ -27,9 +27,6 @@ const ChooseFlight: React.FC<Page> = ({ }) => {
                     <div className="mt-6 flex flex-col gap-4">
                         <FlightCard onClick={navigate} />
                         <FlightCard onClick={navigate} />
-                        <FlightCard onClick={navigate} />
-                        <FlightCard onClick={navigate} />
-                        <FlightCard onClick={navigate} />
                     </div>
                 </div>
             </Responsive>

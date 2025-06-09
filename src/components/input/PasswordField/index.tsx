@@ -40,7 +40,7 @@ const TextField: React.FC<TextField> = ({
         return tw(
             `h-12 border border-grey-60 bg-white w-full flex gap-3 justify-between items-center px-3 rounded-lg`,
             disabled && "bg-secondary-20",
-            error && "border-error-400",
+            error && "border-error-80",
             className
         );
     }, [disabled, error, className]);
