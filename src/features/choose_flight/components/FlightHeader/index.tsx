@@ -21,7 +21,7 @@ const FlightHeader: React.FC<Props> = ({ data }) => {
             <div className="flex items-center gap-3">
                 <FaPlaneDeparture className="w-6 h-6" />
                 <span className="font-medium">
-                    {data.passengers} passengers - {data.class}
+                    {data.passenger} passengers - {data.class}
                 </span>
                 <button className="w-6 h-6 rounded-full border border-white flex-center">
                     <MdOutlineKeyboardArrowDown />

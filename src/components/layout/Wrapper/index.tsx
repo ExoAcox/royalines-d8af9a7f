@@ -17,7 +17,7 @@ interface Props {
 const Wrapper: React.FC<Props> = ({ transparent = true, children, className, navbarClassName, centered }) => {
 
     return (
-        <div className={tw("h-full w-full flex flex-col")}>
+        <div className={tw("h-dvh w-full flex flex-col")}>
             <Navbar transparent={transparent} className={navbarClassName} />
 
             <main

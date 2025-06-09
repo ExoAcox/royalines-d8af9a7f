@@ -2,10 +2,12 @@ import dayjs from "dayjs";
 import { create } from "zustand"
 
 export interface ChooseFlightStore {
-    passengers: number;
+    passenger: number;
     from: string;
     to: string;
-    date: string;
+    date: number;
+    month: number;
+    year: number;
     class: string;
 }
 
@@ -13,15 +15,19 @@ const defaultChooseFlightStore = {
     passengers: 1,
     from: "Jakarta (CGK)",
     to: "Jeddah (JED)",
-    date: dayjs().format("DDMMYYYY"),
+    date: 1,
+    month: 12,
+    year: 2025,
     class: "Economy",
 }
 
 export const useChooseFlightStore = create<ChooseFlightStore>((set) => ({
-    passengers: defaultChooseFlightStore.passengers,
+    passenger: defaultChooseFlightStore.passengers,
     from: defaultChooseFlightStore.from,
     to: defaultChooseFlightStore.to,
     date: defaultChooseFlightStore.date,
+    month: defaultChooseFlightStore.month,
+    year: defaultChooseFlightStore.year,
     class: defaultChooseFlightStore.class,
     reset: () => set(defaultChooseFlightStore),
 }));
