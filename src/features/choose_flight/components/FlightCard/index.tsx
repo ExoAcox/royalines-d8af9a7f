@@ -1,5 +1,9 @@
 import { Button, Chip } from "@components/button";
 
+import Image from "next/image"
+
+import Logo from "@images/bitmap/logo.png"
+
 interface Props {
     onClick: () => void
 }
@@ -29,7 +33,9 @@ const FlightCard: React.FC<Props> = ({ onClick }) => {
             </div>
         </div>
         <div className="flex gap-2 items-center">
-            <div className="w-10 h-10 bg-red-400 rounded-sm" />
+            <div className="rounded-sm w-10 h-10 relative">
+                <Image src={Logo} alt="" fill={true} className="object-contain" />
+            </div>
             <div className="flex flex-col gap-1">
                 <label className="text-sm">Royal Jet Aviation</label>
                 <span className="text-grey-80 text-xs">RJ-5489</span>

@@ -22,7 +22,6 @@ const MainContent: React.FC<Props> = ({ }) => {
         <FlightInput />
         <div className="py-5 my-3 border-b border-t border-base-border">
             <DateInput date={date} month={month} year={year} onChange={data => {
-                console.log(data)
                 useChooseFlightStore.setState({ ...data })
             }} />
         </div>

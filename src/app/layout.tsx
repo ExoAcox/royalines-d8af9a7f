@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "RoyalJet",
-  description: "Enabler",
+  title: "Royalines",
+  description: "One Stop Solution for Your Journey",
 };
 
 interface Props {

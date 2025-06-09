@@ -2,6 +2,9 @@
 
 import { BackButton } from "@components/button";
 import { FlightInfoCard } from "@components/card"
+import Image from "next/image"
+
+import Logo from "@images/bitmap/logo.png"
 
 
 
@@ -20,7 +23,9 @@ const TripSummary: React.FC<Props> = ({ }) => {
         <div className="p-3">
             <FlightInfoCard />
             <div className="flex items-center pb-2 border-t border-base-border pt-3 mt-4 gap-3">
-                <div className="w-10 h-10 bg-red-400 rounded" />
+                <div className="rounded-sm w-10 h-10 relative">
+                    <Image src={Logo} alt="" fill={true} className="object-contain" />
+                </div>
                 <label className="text-sm font-semibold">Royal Jet Aviation</label>
                 <span className="text-grey-80 text-2xs ml-auto">Economy</span>
             </div>

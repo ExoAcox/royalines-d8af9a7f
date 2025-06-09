@@ -4,6 +4,10 @@ import { convertCurrency, parseCurrency } from "@functions/common";
 import { tw } from "@functions/style"
 import { useState } from "react";
 
+import Image from "next/image"
+
+import Logo from "@images/bitmap/logo.png"
+
 interface TimeCardProps {
     active?: boolean;
     children: string;
@@ -25,7 +29,9 @@ interface AirlineListProps {
 
 const AirlineList: React.FC<AirlineListProps> = ({ children, price }) => {
     return <div className="flex text-sm gap-2 items-center w-full">
-        <div className="w-10 h-10 rounded-md bg-red-400" />
+        <div className="rounded-sm w-10 h-10 relative">
+            <Image src={Logo} alt="" fill={true} className="object-contain" />
+        </div>
         <span>{children}</span>
         <span className="ml-auto block font-semibold">From {price}</span>
     </div>

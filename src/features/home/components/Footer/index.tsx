@@ -1,7 +1,7 @@
 import { Responsive } from "@components/layout"
 import Image from "next/image"
 
-import Logo from "@images/bitmap/logo-white.png"
+import Logo from "@images/bitmap/logo-royalines-alt.png"
 
 interface Props {
 
@@ -11,7 +11,7 @@ const Footer: React.FC<Props> = ({ }) => {
     return <footer>
         <Responsive className="text-white pt-32 pb-24" parentClassName="bg-[#0A142F]">
             <div className="flex gap-12 mb-24 justify-center">
-                <div><Image src={Logo} alt="logo" width={106} /></div>
+                <div><Image src={Logo} alt="logo" className="mr-4" /></div>
                 <div>
                     <h5>HEADQUARTERS</h5>
                     <div className="text-bl max-w-[21.875rem]">
