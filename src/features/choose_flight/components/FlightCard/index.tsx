@@ -13,7 +13,7 @@ const FlightCard: React.FC<Props> = ({ onClick }) => {
         <div className="pb-4 mb-4 border-b border-base-border flex items-center gap-4">
             <div className="flex flex-col gap-1">
                 <label className="font-bold">07:45</label>
-                <span className="text-xs">CGK</span>
+                <span className="text-xs">DHX</span>
             </div>
             <div className="flex flex-col text-grey-70 text-xs items-center gap-1">
                 <span>9h 35m</span>

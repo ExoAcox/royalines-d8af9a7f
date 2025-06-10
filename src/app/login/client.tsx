@@ -33,7 +33,7 @@ const Login: React.FC<Page> = ({ }) => {
                 error={errors.username} label="Email" placeholder="Input your email" example="yourname@email.com" required />
             <PasswordField controller={register("password", {
                 required: "Password is required",
-            })} error={errors.username} label="Password" placeholder="Input your password" required />
+            })} error={errors.password} label="Password" placeholder="Input your password" required />
             <Button type="submit" className="w-full mt-2">Login</Button>
         </form>
     </LoginWrapper>

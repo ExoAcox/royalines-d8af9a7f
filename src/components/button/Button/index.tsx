@@ -24,9 +24,9 @@ interface Button {
 const getColor = (color: string) => {
     switch (color) {
         case "secondary":
-            return "text-grey-90 bg-primary border-primary disabled:text-grey-60";
+            return "text-grey-90 bg-primary border-primary disabled:text-grey-70 disabled:border-grey-20";
         default:
-            return "text-grey-90 bg-primary border-primary disabled:text-grey-60";
+            return "text-grey-90 bg-primary border-primary disabled:text-grey-70 disabled:border-grey-20";
     }
 };
 
@@ -35,9 +35,9 @@ const getVariant = (variant: string, color: string) => {
         case "ghost":
             return `bg-white ${color === "primary" ? "text-primary" : "text-primary"}`;
         case "nude":
-            return `bg-transparent border-transparent ${color === "primary" ? "text-primary" : "text-primary"}`;
+            return `bg-transparent border-transparent disabled:border-transparent ${color === "primary" ? "text-primary" : "text-primary"}`;
         default:
-            return `text-white disabled:bg-grey-40`;
+            return `text-white disabled:bg-grey-20`;
     }
 };
 

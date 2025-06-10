@@ -11,7 +11,6 @@ import { SelectAirportModal } from "@features/choose_flight/components";
 
 
 const HomeClient: React.FC<Page> = () => {
-
     return (
         <Wrapper>
             <div className="bg-black px-6 py-20 flex justify-center relative">

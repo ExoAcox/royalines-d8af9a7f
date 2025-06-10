@@ -10,21 +10,11 @@ type FetchError = {
     code?: number;
 } | null;
 
-interface Store<Value> extends Data<Value> {
-    set: (data: Data<Value>) => void;
-    reset: () => void;
-}
-
-interface SetStore<Value> {
-    set: (data: Value) => void;
-    reset: () => void;
-}
 
 type Device = "mobile" | "tablet" | "desktop";
 
 type Locale = "id" | "en";
 
-type Dictionary = Record<string, Payload>;
 
 interface Page {
     device: Device;
@@ -34,4 +24,12 @@ interface Server {
     params: Promise<{
         lang: Locale;
     }>;
+}
+
+interface Airport {
+    airport_id: number;
+    airport_name: string;
+    airport_iata: string;
+    city: string;
+    country: string
 }

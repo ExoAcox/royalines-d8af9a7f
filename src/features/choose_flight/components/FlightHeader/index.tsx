@@ -27,7 +27,7 @@ const FlightHeader: React.FC<Props> = ({ data }) => {
     return <div className="shadow rounded-2xl">
         <div className="bg-primary relative text-white flex flex-col gap-6 items-center pt-6 pb-4 rounded-t-2xl">
             <button className="absolute flex-center top-4 left-4 w-8 h-8 border rounded-full" onClick={back}><IoIosArrowBack /></button>
-            <label className="font-semibold flex items-center gap-2">{data.from} <FaArrowRight /> {data.to}</label>
+            <label className="font-semibold flex items-center gap-2">{`${data.origin.city} (${data.origin.airport_iata})`} <FaArrowRight /> {`${data.destination.city} (${data.destination.airport_iata})`}</label>
             <div className="flex items-center gap-3">
                 <FaPlaneDeparture className="w-6 h-6" />
                 <span className="font-medium">

@@ -3,8 +3,8 @@ import { Button } from "@components/button"
 
 import { ClassInput, FlightInput, PassengerInput, DateInput } from "@components/input";
 import { Link } from "@components/navigation";
+import { useGetDates } from "@features/choose_flight/stores/apiStore";
 import { useChooseFlightStore } from "@features/choose_flight/stores/chooseFlightStore";
-import { useState } from "react";
 
 
 
@@ -16,6 +16,8 @@ interface Props {
 const MainContent: React.FC<Props> = ({ }) => {
     const chooseFlightStore = useChooseFlightStore()
     const { date, month, year, passenger } = chooseFlightStore
+
+    const dates = useGetDates()
 
     return <div className="rounded-2xl p-4 bg-white">
         <h5 className="mb-6">Search Flight</h5>

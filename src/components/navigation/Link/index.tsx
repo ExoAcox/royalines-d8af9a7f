@@ -9,14 +9,14 @@ interface Props {
     href: string;
     className?: string;
     target?: string;
-    disable?: boolean;
+    disabled?: boolean;
     onClick?: () => void;
 }
 
-const Link: React.FC<Props> = ({ children, href = "#", className, target, disable, onClick }) => {
+const Link: React.FC<Props> = ({ children, href = "#", className, target, disabled, onClick }) => {
     const { routerChange } = useRouterEvent();
 
-    if (disable) return <div className={"inline " + className}>{children}</div>;
+    if (disabled) return <div className={"inline " + className}>{children}</div>;
 
     return (
         <Link_
