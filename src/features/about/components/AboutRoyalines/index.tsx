@@ -15,10 +15,7 @@ const AboutRoyalines: React.FC<Props> = ({ }) => {
                 Your Royal Journey Solution.
             </h1>
             <p className="max-w-[38.75rem]">
-                Royalines, proudly operated by PT Royal Jet Aviation, is a premier travel service specializing in private chartered flights for Umrah and complete pilgrimage support-from visas to hotel accommodations.
-            </p>
-            <p className="max-w-[38.75rem]">
-                We understand the importance of your spiritual journey, and our mission is to make it seamless, safe, and supremely comfortable. Our bespoke services are tailored for individuals, families, and groups who value privacy, convenience, and peace of mind during every leg of their sacred trip.
+                Royalines, operated by <b>PT Royal Jet Aviation</b>, provides premium charter aircraft services for all travel needs. While we frequently arrange flights for the Umrah pilgrimage, our services also extend to business travel, family trips, and any destination you may require. We focus on delivering safe, reliable, and comfortable private flights tailored to individuals, families, and groups who prioritize convenience and privacy. Additional services including visa assistance and hotel bookings are coming soon.
             </p>
         </div>
         <Image src={Illustration} alt="image" className="rounded-2xl" />

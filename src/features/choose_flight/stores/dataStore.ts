@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import dayjs from "dayjs";
 import { create } from "zustand"
 
 export const indoAirports = [{

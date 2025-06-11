@@ -1,7 +1,7 @@
 import { Button } from "@components/button"
 import Dropdown from "@components/dropdown/Dropdown"
 import { Link } from "@components/navigation"
-import { useChooseFlightStore } from "@features/choose_flight/stores/chooseFlightStore"
+import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore"
 import { convertCurrency } from "@functions/common"
 import { useState } from "react"
 

@@ -2,7 +2,7 @@
 
 import { Responsive, Wrapper } from "@components/layout"
 import { FlightCard, FlightHeader, SearchFlightModal, SelectAirportModal, SideFilter } from "@features/choose_flight/components"
-import { useChooseFlightStore } from "@features/choose_flight/stores/chooseFlightStore"
+import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore"
 import { useRouterEvent } from "@hooks/useRouter";
 import { useRouter } from "next/navigation";
 

@@ -2,7 +2,7 @@ import { FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa6"
 import CustomInput from "../CustomInput"
 import useModal from "@hooks/useModal"
 import { tw } from "@functions/style";
-import { useChooseFlightStore } from "@features/choose_flight/stores/chooseFlightStore";
+import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
 
 interface ListProps {
     title: string;

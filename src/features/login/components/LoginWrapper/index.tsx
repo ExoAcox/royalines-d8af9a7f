@@ -1,7 +1,7 @@
 import { Link } from "@components/navigation";
 import Image from "next/image"
 
-import Background from "@images/bitmap/background_kabah_1.jpg"
+import Background from "@images/bitmap/background-flight-1.jpg"
 import Logo from "@images/bitmap/logo-royalines.png"
 
 interface Props {

@@ -4,7 +4,7 @@ import { Responsive, Wrapper } from "@components/layout"
 import { ContactInfo, InputForm } from "@features/contact/components"
 import Image from "next/image"
 
-import Background from "@images/bitmap/background-kabah-3.jpg"
+import Background from "@images/bitmap/background-flight-3.jpg"
 
 
 const Contact: React.FC<Page> = ({ }) => {

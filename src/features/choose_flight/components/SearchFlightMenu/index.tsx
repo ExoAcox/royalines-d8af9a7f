@@ -3,7 +3,7 @@ import { Button } from "@components/button"
 
 import { ClassInput, FlightInput, PassengerInput, DateInput } from "@components/input";
 import { Link } from "@components/navigation";
-import { useChooseFlightStore } from "@features/choose_flight/stores/chooseFlightStore";
+import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
 
 
 

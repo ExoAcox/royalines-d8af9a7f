@@ -4,7 +4,7 @@ import useModal from "@hooks/useModal";
 import { MdClose } from "react-icons/md"
 
 import AirportList from "./components/AirportList";
-import { arabAirports, indoAirports, useChooseFlightStore } from "@features/choose_flight/stores/chooseFlightStore";
+import { arabAirports, indoAirports, useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
 import { useMemo, useState } from "react";
 import { useGetAirports } from "@features/choose_flight/stores/apiStore";
 
