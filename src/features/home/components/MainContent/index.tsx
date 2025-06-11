@@ -5,6 +5,9 @@ import { ClassInput, FlightInput, PassengerInput, DateInput } from "@components/
 import { Link } from "@components/navigation";
 import { useGetDates } from "@features/choose_flight/stores/apiStore";
 import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
+import { BiSolidToggleLeft, BiSolidToggleRight } from "react-icons/bi";
+import { GoArrowSwitch } from "react-icons/go";
+import { Else, If, Then } from "react-if";
 
 
 
@@ -15,17 +18,40 @@ interface Props {
 
 const MainContent: React.FC<Props> = ({ }) => {
     const chooseFlightStore = useChooseFlightStore()
-    const { date, month, year, passenger } = chooseFlightStore
+    const { date, month, year, passenger, origin, destination, arabAirport, isRoundTrip } = chooseFlightStore
 
     const dates = useGetDates()
 
+    const onSwitchDestination = () => {
+        useChooseFlightStore.setState({ origin: destination, destination: origin, arabAirport: arabAirport === "arrival" ? "departure" : "arrival" })
+    }
+
+    const onSwitchRoundTrip = () => {
+        useChooseFlightStore.setState({ isRoundTrip: !isRoundTrip })
+    }
+
     return <div className="rounded-2xl p-4 bg-white">
         <h5 className="mb-6">Search Flight</h5>
-        <FlightInput />
-        <div className="py-5 my-3 border-b border-t border-base-border">
+        <div className="relative">
+            <FlightInput />
+            <button className="right-0 top-1/2 -translate-y-1/2 absolute text-[#1A94FF] border-[#1A94FF] border rounded-full p-1" onClick={onSwitchDestination}>
+                <GoArrowSwitch className="w-4 h-4" />
+            </button>
+        </div>
+
+        <div className="py-5 my-3 border-b border-t border-base-border flex items-center gap-1">
             <DateInput date={date} month={month} year={year} onChange={data => {
                 useChooseFlightStore.setState({ ...data })
             }} />
+            <span className="ml-auto text-xs">Round Trip</span>
+            <If condition={isRoundTrip}>
+                <Then>
+                    <BiSolidToggleRight className="fill-[#1A94FF] cursor-pointer w-10 h-12" onClick={onSwitchRoundTrip} />
+                </Then>
+                <Else>
+                    <BiSolidToggleLeft className="fill-[#C4C4CF] cursor-pointer w-10 h-12" onClick={onSwitchRoundTrip} />
+                </Else>
+            </If>
         </div>
         <div className="flex">
             <PassengerInput passenger={passenger} onChange={(passenger) => useChooseFlightStore.setState({ passenger: Number(passenger) })} />
