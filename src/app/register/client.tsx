@@ -35,14 +35,14 @@ const Register: React.FC<Page> = ({ }) => {
         <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
             <TextField controller={register("fullname", {
                 required: "Fullname is required",
-            })} error={errors.fullname} label="Fullname" placeholder="Input your fullname" example="Anya Forger" required />
+            })} error={errors.fullname} label="Fullname" placeholder="Input your fullname" example="Example: Anya Forger" required />
             <TextField controller={register("email", {
                 required: "Email is required",
                 pattern: {
                     value: new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
                     message: "Please enter a valid email address",
                 },
-            })} error={errors.email} label="Email" placeholder="Input your email" example="yourname@email.com" required />
+            })} error={errors.email} label="Email" placeholder="Input your email" example="Example: yourname@email.com" required />
             <PasswordField controller={register("password", {
                 required: "Password is required",
             })} error={errors.password} label="Password" placeholder="Input your password" required />

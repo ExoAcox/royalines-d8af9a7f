@@ -40,7 +40,7 @@ const OrderSummary: React.FC<Props> = ({ }) => {
                 <label className="font-bold">Total Amount Paid</label>
                 <h5 className="font-semibold text-primary">Rp {convertCurrency(totalPrice)}</h5>
             </div>
-            <Dropdown id="dropdown-payment-type" onChange={(value) => setMethod(value)} value={method} labelClassName="border-b last:border-none" panelClassName="-bottom-1 border" placeholder="Set up installment plan" options={[{
+            <Dropdown lite id="dropdown-payment-type" onChange={(value) => setMethod(value)} value={method} labelClassName="border-b last:border-none" panelClassName="-bottom-1 border" placeholder="Set up installment plan" options={[{
                 label: `Pay in 2x Rp ${convertCurrency(totalPrice / 2)}`,
                 value: "dp"
             }, {

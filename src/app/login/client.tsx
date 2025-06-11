@@ -30,7 +30,7 @@ const Login: React.FC<Page> = ({ }) => {
                     message: "Please enter a valid email address",
                 },
             })}
-                error={errors.username} label="Email" placeholder="Input your email" example="yourname@email.com" required />
+                error={errors.username} label="Email" placeholder="Input your email" example="Example: yourname@email.com" required />
             <PasswordField controller={register("password", {
                 required: "Password is required",
             })} error={errors.password} label="Password" placeholder="Input your password" required />

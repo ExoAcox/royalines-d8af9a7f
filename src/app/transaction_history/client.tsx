@@ -1,18 +1,18 @@
 "use client"
 
+import { BackButton } from "@components/button"
 import { Wrapper } from "@components/layout"
-import { OrderSummary, TripSummary } from "@features/payment/components"
 
 
 
 const Payment: React.FC<Page> = ({ }) => {
 
-    return <Wrapper>
-        <div className="my-[8rem] mx-auto shadow w-[26rem] rounded-2xl">
-            <TripSummary />
-            <div className="w-full h-1.5 bg-grey-40" />
-            <OrderSummary />
+    return <Wrapper className="flex flex-col h-full">
+        <div className="flex items-center gap-3">
+            <BackButton />
+            <h4>Transaction History</h4>
         </div>
+        <div className="flex-1">bb</div>
     </Wrapper>
 }
 

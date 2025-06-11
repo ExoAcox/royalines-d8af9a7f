@@ -59,6 +59,7 @@ const tableHeader = ["No", "Full Name", "Seat Number", "Date of Birth", "Nationa
 
 const TableContent: React.FC<Props> = ({ }) => {
     const { setData } = useModal("edit-passenger-modal")
+    const deleteConfirmModal = useModal("delete-confirm-modal")
 
 
     const tableBody = passengers.map((passenger, index) => {
@@ -72,7 +73,9 @@ const TableContent: React.FC<Props> = ({ }) => {
             passenger.passportCountry,
             passenger.expired,
             <div className="flex flex-col gap-1 items-center">
-                <ActionButton id={`passenger-action-${index}`} type="edit_passenger" onEdit={() => setData(passenger)} onDelete={() => null} />
+                <ActionButton id={`passenger-action-${index}`} type="edit_passenger" onEdit={() => setData(passenger)} onDelete={() => {
+                    deleteConfirmModal.setModal(true)
+                }} />
                 <ActionButton type="view_passenger" />
             </div>
         ]

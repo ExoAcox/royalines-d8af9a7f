@@ -15,6 +15,8 @@ interface DropdownProps<Value> extends BasicInput {
     icon?: React.ReactNode;
     position?: Position;
     loading?: boolean;
+    required?: boolean;
+    lite?: boolean;
     placeholderClassName?: string;
     parentClassName?: string;
     arrowClassName?: string;
@@ -33,8 +35,10 @@ const Dropdown = <Value,>({
     disabled,
     placeholder,
     loading,
+    required,
     icon,
     className,
+    lite,
     position = "bottom center",
     placeholderClassName,
     parentClassName,
@@ -73,7 +77,8 @@ const Dropdown = <Value,>({
     const classNameFinal = useMemo(() => {
         return tw(
             classNameLabel,
-            "h-9 border border-base-border rounded-md p-2",
+            "h-12 border border-grey-60 rounded-md p-3",
+            lite && "border-base-border p-2 h-9",
             disabled && "border-tertiary-100 bg-tertiary-100 cursor-default",
             error && "border-error-80",
             className
@@ -109,7 +114,7 @@ const Dropdown = <Value,>({
 
     return (
         <div className={tw("flex flex-col text-cl", parentClassName)}>
-            <LabelInput>{label}</LabelInput>
+            <LabelInput className="block" required={required}>{label}</LabelInput>
             <div id={id} className="relative">
                 <div className={classNameFinal} onClick={() => !disabled && setOpen(!isOpen)}>
                     <button
