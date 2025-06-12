@@ -32,6 +32,7 @@ const RootLayout: React.FC<Props> = async ({ children, params }) => {
     <html>
       <head>
         <link rel="icon" href="/favicon.ico?v=1.1" sizes="any" />
+        <meta name="viewport" content="width=1920" />
       </head>
       <body
         className={tw(process.env.NODE_ENV === "development" && "debug-screens", "antialiased", inter.className)}
