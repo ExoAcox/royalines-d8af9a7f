@@ -15,6 +15,9 @@ import { When } from "react-if";
 const HomeClient: React.FC<Page> = ({ user }) => {
     const [activeTab, setActiveTab] = useState("private-flight")
 
+    console.log(process.env.AUTH_SECRET)
+    console.log(process.env.NEXT_PUBLIC_TOKEN_KEY)
+
     return (
         <Wrapper user={user}>
             <div className="bg-black px-6 py-20 flex justify-center relative">
