@@ -10,8 +10,6 @@ import Logo from "@images/bitmap/logo-royalines.png"
 import { Link } from "@components/navigation";
 import { Button } from "@components/button";
 import { Else, If, Then } from "react-if";
-import { signOut } from "next-auth/react";
-import { deleteCookie } from "cookies-next";
 import { useRouterEvent } from "@hooks/useRouter";
 import { logout } from "@features/login/functions";
 

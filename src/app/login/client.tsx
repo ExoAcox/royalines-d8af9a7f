@@ -27,8 +27,8 @@ const Login: React.FC<Page> = ({ }) => {
         // toast.error("Email or password is incorrect")
 
         try {
-            await signIn("credentials", { ...input, redirect: false })
             routerChange()
+            await signIn("credentials", { ...input, redirect: false })
             router.replace("/")
         } catch (error) {
 

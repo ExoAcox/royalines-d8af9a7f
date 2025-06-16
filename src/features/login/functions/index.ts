@@ -1,5 +1,6 @@
-import { signOut } from "@libs/auth";
+
 import { deleteCookie } from "cookies-next";
+import { signOut } from "next-auth/react";
 
 
 
