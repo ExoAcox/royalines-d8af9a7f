@@ -1,3 +1,4 @@
+import { logout } from "@features/login/functions";
 import axiosInstance, { AxiosBasicCredentials } from "axios";
 import { getCookie, setCookie } from "cookies-next";
 
@@ -64,8 +65,8 @@ axiosInstance.interceptors.response.use(
                     })
                     .then(async (response) => {
                         const data = response.data.data;
-                        setCookie(process.env.NEXT_PUBLIC_TOKEN_KEY!, data.accessToken, { maxAge: 60 * 60 * 365, sameSite: "strict" });
-                        setCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY!, data.refreshToken, { maxAge: 60 * 60 * 365, sameSite: "strict" });
+                        setCookie(process.env.NEXT_PUBLIC_TOKEN_KEY, data.accessToken, { maxAge: 60 * 60 * 365, sameSite: "strict" });
+                        setCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY, data.refreshToken, { maxAge: 60 * 60 * 365, sameSite: "strict" });
                         originalRequest.headers["Authorization"] = "Bearer " + data.accessToken;
                         processQueue(null, data.accessToken);
 
@@ -83,8 +84,9 @@ axiosInstance.interceptors.response.use(
 
                         resolve(axiosInstance(originalRequest));
                     })
-                    .catch(async (error) => {
+                    .catch((error) => {
                         console.warn(error);
+                        logout()
                     })
                     .finally(() => {
                         isRefreshing = false;

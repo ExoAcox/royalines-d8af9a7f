@@ -16,8 +16,13 @@ type Device = "mobile" | "tablet" | "desktop";
 type Locale = "id" | "en";
 
 
+interface User {
+    fullname: string;
+}
+
 interface Page {
-    device: Device;
+    user?: User;
+    device?: Device;
 }
 
 interface Server {
@@ -25,6 +30,7 @@ interface Server {
         lang: Locale;
     }>;
 }
+
 
 interface Airport {
     airport_id: number;

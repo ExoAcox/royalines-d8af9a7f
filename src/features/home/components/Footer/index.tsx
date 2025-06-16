@@ -13,7 +13,7 @@ const Footer: React.FC<Props> = ({ }) => {
             <div className="flex gap-12 mb-24 justify-center">
                 <div><Image src={Logo} alt="logo" className="mr-4" /></div>
                 <div>
-                    <h5>HEADQUARTERS</h5>
+                    <label className="font-bold text-lg">HEADQUARTERS</label>
                     <div className="text-bl max-w-[21.875rem]">
                         JL. ARJUNA UTARA NO.28 KAV.11 RT.11 /
                         RW.2, TANJUNG DUREN, GROGOL,
@@ -25,7 +25,7 @@ const Footer: React.FC<Props> = ({ }) => {
                     <span>admin@royaljetaviation.com</span>
                 </div>
                 <div>
-                    <h5>BRANCH OFFICE</h5>
+                    <label className="font-bold text-lg">BRANCH OFFICE</label>
                     <div className="text-bl max-w-[21.875rem]">
                         JL. RAYA ULUWATU NO. 16 JS JIMBARAN,
                         KUTA SELATAN, BADUNG, 80361

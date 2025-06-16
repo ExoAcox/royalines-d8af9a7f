@@ -14,10 +14,17 @@
   --color-grey-80: #5C5E61;
   --color-grey-90: #2E3032;
   --color-grey-100: #262829;
+  --color-success-20: #ECFDF3;
+  --color-success-40: #A6F4C5;
+  --color-success-60: #32D583;
   --color-success-70: #12B76A;
+  --color-error-20: #FEF3F2;
+  --color-error-40: #FECDCA;
+  --color-error-60: #F97066;
   --color-error-80: #D92D20;
   --color-warning-20: #FFFAEB;
   --color-warning-30: #FEF0C7;
+  --color-warning-40: #FEDF89;
   --color-warning-60: #FDB022;
   --color-warning-70: #F79009;
   --color-warning-80: #DC6803;
@@ -77,7 +84,8 @@ body {
 }
 
 h5 {
-  font-size: var(--text-bl);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   font-weight: bold;
 }
 

@@ -7,6 +7,7 @@ import { Suspense, useCallback } from "react";
 import queryClient from "@libs/react-query";
 
 import RouterEventProvider from "@hooks/useRouter";
+import { SessionProvider } from "next-auth/react";
 
 NProgress.configure({ showSpinner: false });
 
@@ -40,9 +41,11 @@ const Provider: React.FC<ProvidersProps> = ({ children }) => {
 
     return (
         <Suspense>
-            <RouterEventProvider onStart={onStart} onComplete={onComplete}>
-                <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-            </RouterEventProvider>
+            <SessionProvider>
+                <RouterEventProvider onStart={onStart} onComplete={onComplete}>
+                    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+                </RouterEventProvider>
+            </SessionProvider>
         </Suspense>
     );
 };

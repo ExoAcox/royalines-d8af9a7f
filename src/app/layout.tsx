@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import "nprogress/nprogress.css";
+import { cookies } from 'next/headers'
 
 
 import { ToastContainer } from 'react-toastify';
@@ -27,6 +28,13 @@ interface Props {
 }
 
 const RootLayout: React.FC<Props> = async ({ children, params }) => {
+  const cookieStore = await cookies()
+  const token = cookieStore.get(process.env.NEXT_PUBLIC_TOKEN_KEY);
+
+  if (token) {
+    console.log("This is token : " + token)
+  }
+
 
   return (
     <html>

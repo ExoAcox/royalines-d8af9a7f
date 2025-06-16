@@ -47,7 +47,7 @@ const OrderSummary: React.FC<Props> = ({ }) => {
                 label: "Full Payment",
                 value: "fp"
             }]} />
-            <Link href="/login" disabled={!method}><Button className="w-full mt-4" disabled={!method}>Pay Now</Button></Link>
+            <Link href="/my_flight" disabled={!method}><Button className="w-full mt-4" disabled={!method}>Pay Now</Button></Link>
         </div>
     </div>
 }

@@ -36,7 +36,7 @@ const SelectAirportModal: React.FC<Props> = ({ onSelect }) => {
     const close = () => setModal(false)
 
     return <Modal visible={modal} className="!p-0">
-        <div className="flex items-center justify-between border-b border-grey-40 px-4 py-3"><h5>Select City or Airports</h5><MdClose className="cursor-pointer" onClick={close} /></div>
+        <div className="flex items-center justify-between border-b border-grey-40 px-4 py-3"><label className="font-bold text-lg">Select City or Airports</label><MdClose className="cursor-pointer" onClick={close} /></div>
         <div className="p-4 pt-3">
             <TextField className="w-[50.75rem]" placeholder="City, Airport..." value={search} onChange={(value) => setSearch(value)} />
             <AirportList airports={airports} onSelect={() => setModal(false)}>Popular places</AirportList>

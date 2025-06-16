@@ -1,10 +1,11 @@
-import Head from "next/head";
+
 
 import { tw } from "@functions/style";
 
 import Navbar from "./components/Navbar";
 
 interface Props {
+    user?: User;
     children: React.ReactNode;
     device?: Device;
     title?: string;
@@ -14,11 +15,11 @@ interface Props {
     transparent?: boolean;
 }
 
-const Wrapper: React.FC<Props> = ({ transparent = true, children, className, navbarClassName, centered }) => {
+const Wrapper: React.FC<Props> = ({ user, transparent = true, children, className, navbarClassName, centered }) => {
 
     return (
         <div className={tw("h-dvh w-full flex flex-col")}>
-            <Navbar transparent={transparent} className={navbarClassName} />
+            <Navbar user={user} transparent={transparent} className={navbarClassName} />
 
             <main
                 className={tw(

@@ -1,5 +1,5 @@
 import { BackButton } from "@components/button"
-import { FlightInfoCard } from "@components/card"
+import { AirlineInfoCard, FlightInfoCard } from "@components/card"
 import { Responsive } from "@components/layout"
 import Image from "next/image"
 
@@ -19,13 +19,7 @@ const TopBar: React.FC<Props> = ({ }) => {
                 <BackButton />
                 <label className="text-2xl font-bold">Select seat number</label>
             </button>
-            <div className="gap-3 flex items-center ml-auto pr-3 border-r">
-                <div className="rounded-sm w-10 h-10 relative">
-                    <Image src={Logo} alt="" fill={true} className="object-contain" />
-                </div>
-                <label className="text-sm font-semibold">Royal Jet Aviation</label>
-                <span className="text-grey-80 text-2xs ml-auto">Economy</span>
-            </div>
+            <AirlineInfoCard className="ml-auto pr-3 border-r" />
             <FlightInfoCard className="min-w-[24rem]" />
         </div>
     </Responsive>

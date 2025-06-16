@@ -24,15 +24,15 @@ const Login: React.FC<Page> = ({ }) => {
     const onSubmit: SubmitHandler<Form> = async (input, e) => {
         e?.preventDefault()
 
-        toast.error("Email or password is incorrect")
+        // toast.error("Email or password is incorrect")
 
-        // try {
-        //     await signIn("credentials", { ...input, redirect: false })
-        //     routerChange()
-        //     router.replace("/")
-        // } catch (error) {
+        try {
+            await signIn("credentials", { ...input, redirect: false })
+            routerChange()
+            router.replace("/")
+        } catch (error) {
 
-        // }
+        }
 
 
 
@@ -41,15 +41,15 @@ const Login: React.FC<Page> = ({ }) => {
     return <LoginWrapper title="Login">
         <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
             <TextField controller={register("email", {
-                required: "Email is required",
-                pattern: {
-                    value: new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
-                    message: "Please enter a valid email address",
-                },
+                // required: "Email is required",
+                // pattern: {
+                //     value: new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
+                //     message: "Please enter a valid email address",
+                // },
             })}
                 error={errors.email} label="Email" placeholder="Input your email" example="Example: yourname@email.com" required />
             <PasswordField controller={register("password", {
-                required: "Password is required",
+                // required: "Password is required",
             })} error={errors.password} label="Password" placeholder="Input your password" required />
             <Button type="submit" className="w-full mt-2">Login</Button>
         </form>

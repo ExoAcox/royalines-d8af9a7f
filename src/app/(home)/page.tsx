@@ -1,14 +1,13 @@
 
 
-import { getDevice } from "@functions/server";
-
+import { auth } from "@libs/auth";
 import HomeClient from "./client";
 
 
 const Home: React.FC<Server> = async () => {
-    const device = await getDevice();
+    const session = await auth()
 
-    return <HomeClient device={device} />;
+    return <HomeClient user={session?.user} />;
 };
 
 export default Home;

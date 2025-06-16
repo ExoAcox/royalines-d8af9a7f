@@ -1,17 +1,19 @@
-import NextAuth from "next-auth"
+import NextAuth, { DefaultSession } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
+
+declare module "next-auth" {
+    interface Session {
+        user: {
+            fullname: string
+        } & DefaultSession["user"]
+    }
+}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
         Credentials({
-            credentials: {
-                email: {},
-                password: {},
-            },
             authorize: async (credentials) => {
                 let user = null
-
-                console.log(credentials)
 
                 // logic to verify if the user exists
                 user = {}

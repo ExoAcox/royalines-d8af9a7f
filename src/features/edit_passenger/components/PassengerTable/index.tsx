@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 
 
 interface Props {
-
+    hideAction?: boolean;
 }
 
 
@@ -57,7 +57,7 @@ const tableHeader = ["No", "Full Name", "Seat Number", "Date of Birth", "Nationa
 
 
 
-const TableContent: React.FC<Props> = ({ }) => {
+const TableContent: React.FC<Props> = ({ hideAction }) => {
     const { setData } = useModal("edit-passenger-modal")
     const deleteConfirmModal = useModal("delete-confirm-modal")
 
@@ -80,12 +80,14 @@ const TableContent: React.FC<Props> = ({ }) => {
             </div>
         ]
 
-        return data
+
+
+        return hideAction ? data.slice(0, -1) : data
     })
 
     return <div>
         <Table>
-            <TableHeader data={tableHeader} />
+            <TableHeader data={hideAction ? tableHeader.slice(0, -1) : tableHeader} />
             <TableBody data={tableBody} />
         </Table>
     </div>

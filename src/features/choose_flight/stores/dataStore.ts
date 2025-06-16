@@ -34,6 +34,7 @@ export interface ChooseFlightStore {
     class: string;
     arabAirport: "departure" | "arrival";
     isRoundTrip: boolean;
+    flights: string[]
 }
 
 const defaultChooseFlightStore = {
@@ -45,7 +46,8 @@ const defaultChooseFlightStore = {
     year: 2025,
     class: "Economy",
     arabAirport: "arrival" as const,
-    isRoundTrip: false
+    isRoundTrip: false,
+    flights: []
 }
 
 export const useChooseFlightStore = create<ChooseFlightStore>((set) => ({
@@ -58,5 +60,6 @@ export const useChooseFlightStore = create<ChooseFlightStore>((set) => ({
     class: defaultChooseFlightStore.class,
     arabAirport: defaultChooseFlightStore.arabAirport,
     isRoundTrip: defaultChooseFlightStore.isRoundTrip,
+    flights: defaultChooseFlightStore.flights,
     reset: () => set(defaultChooseFlightStore),
 }));

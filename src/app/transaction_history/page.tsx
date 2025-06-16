@@ -2,13 +2,13 @@
 
 import { getDevice } from "@functions/server";
 
-import MyFlightClient from "./client";
+import TransactionHistoryClient from "./client";
 
 
-const MyFlight: React.FC<Server> = async () => {
+const TransactionHistory: React.FC<Server> = async () => {
     const device = await getDevice();
 
-    return <MyFlightClient device={device} />;
+    return <TransactionHistoryClient device={device} />;
 };
 
-export default MyFlight;
+export default TransactionHistory;
