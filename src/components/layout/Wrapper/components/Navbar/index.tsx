@@ -71,7 +71,9 @@ const Navbar: React.FC<NavbarProps> = ({ user, transparent, className }) => {
                 className={tw("flex items-center gap-8 text-grey-80 w-full")}
 
             >
-                <Image src={Logo} alt="logo" className="h-10 w-[11.375rem] mr-auto" />
+                <Link className="mr-auto" href="/">
+                    <Image src={Logo} alt="logo" className="h-10 w-[11.375rem]" />
+                </Link>
                 <Link href="/">Home</Link>
                 <Link href="/about">About</Link>
                 <Link href="/contact">Contact</Link>

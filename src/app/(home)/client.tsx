@@ -19,12 +19,12 @@ const HomeClient: React.FC<Page> = ({ user }) => {
     console.log(process.env.NEXT_PUBLIC_TOKEN_KEY)
 
     return (
-        <Wrapper user={user}>
+        <Wrapper user={user} className="bg-[#0A142F]">
             <div className="bg-black px-6 py-20 flex justify-center relative">
                 <Image src={Background} alt="" fill={true} className="absolute inset-0 object-cover" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(107.14deg, rgba(217, 217, 217, 0), #000000)" }} />
                 <div className="min-w-[50rem] relative">
-                    <TopNavbar />
+                    <TopNavbar activeTab={activeTab} onClick={setActiveTab} />
                     <When condition={activeTab === "private-flight"}>
                         <PrivateFlightContent />
                     </When>

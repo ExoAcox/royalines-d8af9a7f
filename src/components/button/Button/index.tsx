@@ -10,7 +10,7 @@ import { Spinner } from "@components/loader";
 interface Button {
     children?: React.ReactNode;
     onClick?: React.MouseEventHandler;
-    color?: "primary" | "secondary";
+    color?: "primary" | "secondary" | "red";
     variant?: "filled" | "ghost" | "nude";
     type?: "button" | "submit";
     rippleColor?: string;
@@ -23,19 +23,19 @@ interface Button {
 
 const getColor = (color: string) => {
     switch (color) {
-        case "secondary":
-            return "text-grey-90 bg-primary border-primary disabled:text-grey-70 disabled:border-grey-20";
+        case "red":
+            return "text-error-80 bg-error-80 border-error-80 disabled:text-grey-70 disabled:border-grey-20";
         default:
-            return "text-grey-90 bg-primary border-primary disabled:text-grey-70 disabled:border-grey-20";
+            return "text-primary bg-primary border-primary disabled:text-grey-70 disabled:border-grey-20";
     }
 };
 
 const getVariant = (variant: string, color: string) => {
     switch (variant) {
         case "ghost":
-            return `bg-white ${color === "primary" ? "text-primary" : "text-primary"}`;
+            return `bg-white`;
         case "nude":
-            return `bg-transparent border-transparent disabled:border-transparent ${color === "primary" ? "text-primary" : "text-primary"}`;
+            return `bg-transparent border-transparent disabled:border-transparent`;
         default:
             return `text-white disabled:bg-grey-20`;
     }

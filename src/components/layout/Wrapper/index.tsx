@@ -23,8 +23,8 @@ const Wrapper: React.FC<Props> = ({ user, transparent = true, children, classNam
 
             <main
                 className={tw(
-                    "relative flex-1 min-w-[1080px] overflow-auto pt-[6rem]",
-                    centered && "flex items-center justify-center",
+                    "relative flex flex-col flex-1 min-w-[1080px] overflow-auto pt-[6rem]",
+                    centered && "items-center justify-center",
                     className
                 )}
             >{children}
