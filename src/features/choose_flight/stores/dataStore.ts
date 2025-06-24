@@ -9,19 +9,20 @@ export const indoAirports = [{
 },]
 
 export const arabAirports = [{
-    "airport_id": 123,
+    "airport_id": 2,
     "airport_name": "King Abdulaziz International Airport",
     "airport_iata": "JED",
     "city": "Jeddah",
     "country": "Kingdom of Saudi Arabia"
 },
-{
-    "airport_id": 1234,
-    "airport_name": "Prince Mohammad bin Abdulaziz International Airport",
-    "airport_iata": "MED",
-    "city": "Medina",
-    "country": "Kingdom of Saudi Arabia"
-}]
+    // {
+    //     "airport_id": 1234,
+    //     "airport_name": "Prince Mohammad bin Abdulaziz International Airport",
+    //     "airport_iata": "MED",
+    //     "city": "Medina",
+    //     "country": "Kingdom of Saudi Arabia"
+    // }
+]
 
 
 export interface ChooseFlightStore {
@@ -34,7 +35,8 @@ export interface ChooseFlightStore {
     class: string;
     arabAirport: "departure" | "arrival";
     isRoundTrip: boolean;
-    flights: string[]
+    flightIdOutbound: number | null;
+    flightIdInbound: number | null;
 }
 
 const defaultChooseFlightStore = {
@@ -47,7 +49,8 @@ const defaultChooseFlightStore = {
     class: "Economy",
     arabAirport: "arrival" as const,
     isRoundTrip: false,
-    flights: []
+    flightIdOutbound: null,
+    flightIdInbound: null
 }
 
 export const useChooseFlightStore = create<ChooseFlightStore>((set) => ({
@@ -60,6 +63,7 @@ export const useChooseFlightStore = create<ChooseFlightStore>((set) => ({
     class: defaultChooseFlightStore.class,
     arabAirport: defaultChooseFlightStore.arabAirport,
     isRoundTrip: defaultChooseFlightStore.isRoundTrip,
-    flights: defaultChooseFlightStore.flights,
+    flightIdOutbound: defaultChooseFlightStore.flightIdOutbound,
+    flightIdInbound: defaultChooseFlightStore.flightIdInbound,
     reset: () => set(defaultChooseFlightStore),
 }));

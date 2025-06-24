@@ -22,7 +22,6 @@ const TextField: React.FC<TextField> = ({
     onChange,
     label,
     placeholder,
-    type = "text",
     example,
     className,
     parentClassName,
@@ -34,7 +33,7 @@ const TextField: React.FC<TextField> = ({
     onkeyDown
 }) => {
     const [isVisible, setVisible] = useState(false);
-    const inputProps = { value, placeholder, type, disabled };
+    const inputProps = { value, placeholder, disabled };
 
     const classNameFinal = useMemo(() => {
         return tw(
@@ -50,6 +49,7 @@ const TextField: React.FC<TextField> = ({
             <LabelInput className="block" required={required}>{label}</LabelInput>
             <div className={classNameFinal}>
                 <input
+                    type={isVisible ? "text" : "password"}
                     className={tw("flex-1 w-full focus:outline-none text-grey-90 placeholder:text-grey-60", disabled && "bg-grey-40", inputClassName)}
                     onChange={(e) => {
                         if (onChange) onChange(e.target.value);

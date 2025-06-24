@@ -7,9 +7,9 @@ import Image from "next/image"
 import Background from "@images/bitmap/background-flight-2.jpg"
 
 
-const Contact: React.FC<Page> = ({ }) => {
+const Contact: React.FC<Page> = ({ user }) => {
 
-    return <Wrapper className="flex flex-col">
+    return <Wrapper user={user} className="flex flex-col">
         <Responsive className="flex-center w-full h-full" parentClassName="flex-1">
             <div className="flex justify-between w-full max-w-[90rem] py-12 items-center">
                 <Image src={Background} alt="" fill={true} className="absolute object-cover" />

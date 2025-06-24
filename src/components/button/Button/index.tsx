@@ -6,6 +6,7 @@ import useRipple from "use-ripple-hook";
 import { tw } from "@functions/style";
 
 import { Spinner } from "@components/loader";
+import { Else, If, Then, When } from "react-if";
 
 interface Button {
     children?: React.ReactNode;
@@ -24,9 +25,9 @@ interface Button {
 const getColor = (color: string) => {
     switch (color) {
         case "red":
-            return "text-error-80 bg-error-80 border-error-80 disabled:text-grey-70 disabled:border-grey-20";
+            return "text-error-80 bg-error-80 border-error-80 disabled:text-grey-60 disabled:border-grey-50";
         default:
-            return "text-primary bg-primary border-primary disabled:text-grey-70 disabled:border-grey-20";
+            return "text-primary bg-primary border-primary disabled:text-grey-60 disabled:border-grey-50";
     }
 };
 
@@ -37,7 +38,7 @@ const getVariant = (variant: string, color: string) => {
         case "nude":
             return `bg-transparent border-transparent disabled:border-transparent`;
         default:
-            return `text-white disabled:bg-grey-20`;
+            return `text-white disabled:bg-grey-40`;
     }
 };
 
@@ -56,7 +57,6 @@ const Button: React.FC<Button> = ({
 }) => {
     const [buttonRef, event] = useRipple({ color: rippleColor || "rgba(0, 0, 0, 0.1)", disabled: variant === "nude" });
 
-    const buttonProps = { onClick, type };
 
     const classNameFinal = useMemo(
         () =>
@@ -64,6 +64,7 @@ const Button: React.FC<Button> = ({
                 `flex group shrink-0 font-semibold items-center justify-center gap-2 whitespace-nowrap relative rounded-lg border w-fit h-fit px-3.5 py-2 overflow-hidden`,
                 getColor(color),
                 getVariant(variant, color),
+                loading && "!cursor-wait",
                 className
             ),
         [className, disabled, color, variant]
@@ -85,17 +86,22 @@ const Button: React.FC<Button> = ({
             className={classNameFinal}
             ref={buttonRef}
             onMouseDown={event}
-            disabled={loading || disabled}
-            {...buttonProps}
+            disabled={disabled}
+            type={type}
+            onClick={(e) => {
+                if (loading) e.preventDefault()
+                if (onClick) onClick(e)
+            }}
         >
-            <div className={tw("flex items-center gap-1", labelClassName)}>{loading ? "Loading ..." : children}</div>
-            {loading && (
-                <Spinner
-                    color={variant === "filled" ? "#fff" : color === "primary" ? "var(--color-primary)" : "var(--color-primary)"}
-                    className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                    size={buttonRef.current?.offsetHeight ? (buttonRef.current?.offsetHeight / 10) * 6 : undefined}
-                />
-            )}
+            <div className={tw("flex items-center gap-1", loading && "text-transparent", labelClassName)}>{children}</div>
+            <When condition={loading}>
+                <div className="flex-center inset-0 absolute">
+                    <Spinner
+                        color={variant === "filled" ? "#fff" : color === "primary" ? "var(--color-primary)" : "var(--color-primary)"}
+                        size={buttonRef.current?.offsetHeight ? (buttonRef.current?.offsetHeight / 10) * 6 : undefined}
+                    />
+                </div>
+            </When>
             <div
                 className={tw(
                     "absolute invisible left-0 top-0 w-full h-full group-hover:visible",

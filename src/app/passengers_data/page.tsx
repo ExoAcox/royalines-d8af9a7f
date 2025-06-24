@@ -1,14 +1,14 @@
 
 
-import { getDevice } from "@functions/server";
+import { auth } from "@libs/auth";
 
 import PassengersDataClient from "./client";
 
 
 const PassengersData: React.FC<Server> = async () => {
-    const device = await getDevice();
+    const session = await auth()
 
-    return <PassengersDataClient device={device} />;
+    return <PassengersDataClient user={session?.user} />;
 };
 
 export default PassengersData;

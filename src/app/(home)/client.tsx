@@ -10,13 +10,23 @@ import Background from "@images/bitmap/background-flight-2.jpg"
 import { SelectAirportModal } from "@features/choose_flight/components";
 import { useState } from "react";
 import { When } from "react-if";
+import { useRouterEvent } from "@hooks/useRouter";
+import { useRouter } from "next/navigation";
+import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
 
 
 const HomeClient: React.FC<Page> = ({ user }) => {
     const [activeTab, setActiveTab] = useState("private-flight")
+    const chooseFlightStore = useChooseFlightStore()
 
-    console.log(process.env.AUTH_SECRET)
-    console.log(process.env.NEXT_PUBLIC_TOKEN_KEY)
+    const { routerChange } = useRouterEvent()
+    const router = useRouter()
+
+
+    const handleSearchFlight = () => {
+        routerChange()
+        router.push(`/choose_flight?data=${JSON.stringify(chooseFlightStore)}`)
+    }
 
     return (
         <Wrapper user={user} className="bg-[#0A142F]">
@@ -26,7 +36,7 @@ const HomeClient: React.FC<Page> = ({ user }) => {
                 <div className="min-w-[50rem] relative">
                     <TopNavbar activeTab={activeTab} onClick={setActiveTab} />
                     <When condition={activeTab === "private-flight"}>
-                        <PrivateFlightContent />
+                        <PrivateFlightContent onClick={handleSearchFlight} />
                     </When>
                     <When condition={activeTab === "ticket-checker"}>
                         <TicketCheckerContent />

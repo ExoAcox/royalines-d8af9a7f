@@ -6,9 +6,9 @@ import { PaymentDetail } from "@features/payment/components"
 
 
 
-const PaymentProcess: React.FC<Page> = ({ }) => {
+const PaymentProcess: React.FC<Page> = ({ user }) => {
 
-    return <Wrapper>
+    return <Wrapper user={user}>
         <Responsive className="flex gap-4 py-12 max-w-[80rem]">
             <div className="flex-1 rounded-2xl shadow-xs overflow-hidden" >
                 <div className="py-2 px-4 bg-white border-b border-grey-40">

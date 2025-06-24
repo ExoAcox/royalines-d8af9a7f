@@ -1,34 +1,26 @@
-import { GetAirports, getAirports } from "@api/airport";
-import { getDates } from "@api/date";
-import { bookingFlight, BookingFlight, getFlightSchedules, GetFlightSchedules, } from "@api/flight";
+import { GetAirports, getAirports, getDates, GetDates, getFlightSchedules, GetFlightSchedules, checkoutFlight, CheckoutFlight } from "@api/flights";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 
 
-export const useGetAirports = (args?: GetAirports) => {
+export const useGetAirports = (args?: GetAirports, enabled?: boolean) => {
     return useQuery({
-        queryKey: ["airport/getAirports"],
+        queryKey: ["flights/getAirports", args],
         queryFn: () => getAirports(args),
+        enabled
     });
 };
 
-export const useGetDates = () => {
+export const useGetDates = (args: GetDates) => {
     return useQuery({
-        queryKey: ["date/getDates"],
-        queryFn: () => getDates(),
+        queryKey: ["flights/getDates", args],
+        queryFn: () => getDates(args),
     });
 };
 
 export const useGetFlightSchedules = (args: GetFlightSchedules) => {
     return useQuery({
-        queryKey: ["flights/getFlighSchedules"],
+        queryKey: ["flights/getFlighSchedules", args],
         queryFn: () => getFlightSchedules(args),
-    });
-};
-
-export const useBookingFlight = () => {
-    return useMutation({
-        mutationKey: ["flights/bookingFlight"],
-        mutationFn: (args: BookingFlight) => bookingFlight(args),
     });
 };

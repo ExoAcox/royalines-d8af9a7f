@@ -8,12 +8,14 @@ import { toast } from "react-toastify"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useRouterEvent } from "@hooks/useRouter"
+import { useLogin } from "@features/login/stores/apiStore"
 
 interface Form { email: string; password: string }
 
 const Login: React.FC<Page> = ({ }) => {
     const { routerChange } = useRouterEvent()
     const router = useRouter()
+    const login = useLogin()
 
     const {
         register,
@@ -24,14 +26,13 @@ const Login: React.FC<Page> = ({ }) => {
     const onSubmit: SubmitHandler<Form> = async (input, e) => {
         e?.preventDefault()
 
-        // toast.error("Email or password is incorrect")
-
         try {
             routerChange()
-            await signIn("credentials", { ...input, redirect: false })
+            const user = await login.mutateAsync(input)
+            await signIn("credentials", { ...user, redirect: false })
             router.replace("/")
         } catch (error) {
-
+            toast.error((error as FetchError)?.message)
         }
 
 
@@ -41,17 +42,17 @@ const Login: React.FC<Page> = ({ }) => {
     return <LoginWrapper title="Login">
         <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
             <TextField controller={register("email", {
-                // required: "Email is required",
-                // pattern: {
-                //     value: new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
-                //     message: "Please enter a valid email address",
-                // },
+                required: "Email is required",
+                pattern: {
+                    value: new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
+                    message: "Please enter a valid email address",
+                },
             })}
                 error={errors.email} label="Email" placeholder="Input your email" example="Example: yourname@email.com" required />
             <PasswordField controller={register("password", {
-                // required: "Password is required",
+                required: "Password is required",
             })} error={errors.password} label="Password" placeholder="Input your password" required />
-            <Button type="submit" className="w-full mt-2">Login</Button>
+            <Button type="submit" className="w-full mt-2" loading={login.isPending || login.isSuccess}>Login</Button>
         </form>
     </LoginWrapper>
 

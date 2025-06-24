@@ -6,9 +6,9 @@ import { TransactionCard, TransactionHeader } from "@features/transaction_histor
 
 
 
-const Payment: React.FC<Page> = ({ }) => {
+const Payment: React.FC<Page> = ({ user }) => {
 
-    return <Wrapper className="flex flex-col">
+    return <Wrapper user={user} className="flex flex-col">
         <Responsive className="flex items-center gap-3 px-12 py-4" parentClassName="sticky top-0 bg-white z-[2] border-b">
             <BackButton />
             <h4>Transaction History</h4>

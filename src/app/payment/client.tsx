@@ -5,9 +5,9 @@ import { OrderSummary, TripSummary } from "@features/payment/components"
 
 
 
-const Payment: React.FC<Page> = ({ }) => {
+const Payment: React.FC<Page> = ({ user }) => {
 
-    return <Wrapper>
+    return <Wrapper user={user}>
         <div className="my-[8rem] mx-auto shadow w-[26rem] rounded-2xl">
             <TripSummary />
             <div className="w-full h-1.5 bg-grey-40" />

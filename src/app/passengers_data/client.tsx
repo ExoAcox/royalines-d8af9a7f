@@ -9,13 +9,13 @@ import { PiSeatFill } from "react-icons/pi"
 
 
 
-const PassengersData: React.FC<Page> = ({ }) => {
+const PassengersData: React.FC<Page> = ({ user }) => {
     const cancelConfirmModal = useModal("cancel-confirm-modal")
     const deleteConfirmModal = useModal("delete-confirm-modal")
     const addPassengerModal = useModal("add-passenger-modal")
 
 
-    return <Wrapper>
+    return <Wrapper user={user}>
         <Responsive className="pt-12 pb-32">
             <PassengerHeader />
             <PassengerTable />

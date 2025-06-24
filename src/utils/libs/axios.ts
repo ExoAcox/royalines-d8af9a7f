@@ -47,36 +47,27 @@ axiosInstance.interceptors.response.use(
             }
 
             console.warn("Access Token expired, getting new token ...");
-            const refresh_token = getCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY!) as string;
+            const token = await getCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY)
 
-            const params = new URLSearchParams();
-            params.append("refresh_token", refresh_token);
-            params.append("grant_type", "refresh_token");
+            const API_URL = process.env.NEXT_PUBLIC_API_URL
+            const API_VERSION = process.env.NEXT_PUBLIC_API_VERSION
 
             return new Promise((resolve) => {
                 axiosInstance
-                    .post(process.env.NEXT_PUBLIC_ACCOUNT_URL + `/users/v1/token/oauth`, params, {
-                        headers: { apikey: process.env.NEXT_PUBLIC_API_KEY },
-                        auth: {
-                            username: process.env.NEXT_PUBLIC_MYSIIS_USERNAME,
-                            password: process.env.NEXT_PUBLIC_MYSIIS_PASSWORD,
-                        },
+                    .post(`${API_URL}/${API_VERSION}/users/refresh`, {}, {
+                        headers: { Authorization: token },
                         skipAuthRefresh: true,
                     })
-                    .then(async (response) => {
+                    .then((response) => {
                         const data = response.data.data;
-                        setCookie(process.env.NEXT_PUBLIC_TOKEN_KEY, data.accessToken, { maxAge: 60 * 60 * 365, sameSite: "strict" });
-                        setCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY, data.refreshToken, { maxAge: 60 * 60 * 365, sameSite: "strict" });
-                        originalRequest.headers["Authorization"] = "Bearer " + data.accessToken;
-                        processQueue(null, data.accessToken);
+                        setCookie(process.env.NEXT_PUBLIC_TOKEN_KEY, data.access_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
+                        setCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY, data.refresh_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
+                        // originalRequest.headers["Authorization"] = "Bearer " + data.access_token;
+                        processQueue(null, data.access_token);
 
-                        const headers: { Authorization: string; apikey?: string } = {
-                            Authorization: "Bearer " + data.accessToken,
+                        const headers: { Authorization: string } = {
+                            Authorization: "Bearer " + data.access_token,
                         };
-
-                        if (originalRequest.headers.apikey) {
-                            headers.apikey = process.env.NEXT_PUBLIC_API_KEY;
-                        }
 
                         originalRequest.headers = headers;
                         originalRequest._retry = true;
@@ -86,7 +77,7 @@ axiosInstance.interceptors.response.use(
                     })
                     .catch((error) => {
                         console.warn(error);
-                        logout()
+                        // logout()
                     })
                     .finally(() => {
                         isRefreshing = false;
@@ -101,11 +92,11 @@ axiosInstance.interceptors.response.use(
 export const axios = axiosInstance;
 
 export const token = () => {
-    return getCookie(process.env.NEXT_PUBLIC_TOKEN_KEY!);
+    return getCookie(process.env.NEXT_PUBLIC_TOKEN_KEY);
 };
 
 export const header = (directToken?: string) => {
-    return { Authorization: `Bearer ${directToken || token()}`, apikey: process.env.NEXT_PUBLIC_API_KEY };
+    return { Authorization: `Bearer ${directToken || token()}` };
 };
 
 export const catchHelper = (reject: (error: FetchError) => void, error: { response: { data: object } }) => {

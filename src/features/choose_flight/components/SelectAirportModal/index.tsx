@@ -8,18 +8,17 @@ import { arabAirports, indoAirports, useChooseFlightStore } from "@features/choo
 import { useMemo, useState } from "react";
 import { useGetAirports } from "@features/choose_flight/stores/apiStore";
 
+
 interface Props {
     onSelect: (data: { airport: object, type?: string }) => void;
 }
-
-
 
 const SelectAirportModal: React.FC<Props> = ({ onSelect }) => {
     const [search, setSearch] = useState("")
     const { modal, setModal, data } = useModal<{ type: string }>("select-airport-modal")
     const arabAirport = useChooseFlightStore(data => data.arabAirport)
 
-    const airports_ = useGetAirports({ search })
+    const airports_ = useGetAirports({ search }, modal)
 
     const airports = useMemo(() => {
         if (data?.type) {

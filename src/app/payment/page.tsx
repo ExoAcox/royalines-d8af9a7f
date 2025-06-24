@@ -1,14 +1,14 @@
 
 
-import { getDevice } from "@functions/server";
+import { auth } from "@libs/auth";
 
 import PaymentClient from "./client";
 
 
 const Payment: React.FC<Server> = async () => {
-    const device = await getDevice();
+    const session = await auth()
 
-    return <PaymentClient device={device} />;
+    return <PaymentClient user={session?.user} />;
 };
 
 export default Payment;

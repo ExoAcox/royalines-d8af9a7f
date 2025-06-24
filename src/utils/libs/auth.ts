@@ -3,9 +3,7 @@ import Credentials from "next-auth/providers/credentials"
 
 declare module "next-auth" {
     interface Session {
-        user: {
-            fullname: string
-        } & DefaultSession["user"]
+        user: User & DefaultSession["user"]
     }
 }
 
@@ -16,8 +14,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             authorize: async (credentials) => {
                 let user = null
 
+                const { user_id, fullname, email, roles } = credentials
+
                 // logic to verify if the user exists
-                user = {}
+                user = { user_id, fullname, email, roles } as User
 
                 if (!user) {
                     // No user found, so this is their first attempt to login
@@ -30,4 +30,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
         }),
     ],
+    session: {
+        strategy: "jwt",
+        maxAge: 60 * 60 * 24 * 30,
+    },
+    jwt: {
+        maxAge: 60 * 60 * 24 * 30
+    }
 })

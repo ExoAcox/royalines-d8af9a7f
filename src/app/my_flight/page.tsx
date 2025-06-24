@@ -1,14 +1,14 @@
 
 
-import { getDevice } from "@functions/server";
+import { auth } from "@libs/auth";
 
 import MyFlightClient from "./client";
 
 
 const MyFlight: React.FC<Server> = async () => {
-    const device = await getDevice();
+    const session = await auth()
 
-    return <MyFlightClient device={device} />;
+    return <MyFlightClient user={session?.user} />;
 };
 
 export default MyFlight;

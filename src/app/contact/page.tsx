@@ -1,14 +1,14 @@
 
 
-import { getDevice } from "@functions/server";
+import { auth } from "@libs/auth";
 
 import ContactClient from "./client";
 
 
 const Contact: React.FC<Server> = async () => {
-    const device = await getDevice();
+    const session = await auth()
 
-    return <ContactClient device={device} />;
+    return <ContactClient user={session?.user} />;
 };
 
 export default Contact;

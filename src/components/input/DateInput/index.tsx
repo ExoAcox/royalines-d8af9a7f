@@ -3,6 +3,10 @@ import CustomInput from "../CustomInput"
 import Dropdown from "@components/dropdown/Dropdown"
 import dayjs from "dayjs";
 import localeData from 'dayjs/plugin/localeData'
+import { useGetDates } from "@features/choose_flight/stores/apiStore";
+import { Else, If, Then } from "react-if";
+import { Spinner } from "@components/loader";
+import { useEffect } from "react";
 
 dayjs.extend(localeData);
 const customParseFormat = require('dayjs/plugin/customParseFormat');
@@ -18,19 +22,33 @@ interface Props {
 
 const DateInput: React.FC<Props> = ({ date, month, year, onChange }) => {
 
+    const dates = useGetDates({ year })
+
+    useEffect(() => {
+        if (dates.data && dates.data.length) {
+            onChange({ month: dates.data[0].month, date: dates.data[0].available_dates[0] })
+        }
+    }, [dates.data])
+
 
     return <CustomInput Icon={MdEditCalendar} label="Departure date">
         <div className="w-fit gap-2 flex mt-2 font-medium">
-            <Dropdown lite id="dropdown-departure-date" labelClassName="text-center block" value={date} options={[
-                { label: 1, value: 1 },
-                { label: 6, value: 6 },
-                { label: 9, value: 9 },
-                { label: 24, value: 24 },
-                { label: 25, value: 25 },
-                { label: 28, value: 28 }
-            ]} onChange={(date) => onChange({ date })} />
-            <Dropdown lite id="dropdown-departure-month" labelClassName="text-center block" value={dayjs().month(month - 1).format("MMMM")} options={dayjs.months().map(month => ({ label: month, value: month }))} onChange={(month) => onChange({ month: dayjs(month, 'MMMM').month() + 1 })} />
-            <Dropdown lite id="dropdown-departure-year" labelClassName="text-center block" value={year} options={Array.from({ length: 10 }, (_, index) => ({ label: dayjs().year() + index, value: dayjs().year() + index }))} onChange={(year) => onChange({ year })} />
+            <If condition={dates.isPending}>
+                <Then>
+                    <Spinner />
+                </Then>
+                <Else>
+                    <Dropdown lite id="dropdown-departure-date" labelClassName="text-center block" value={date}
+                        options={dates.data?.[dates.data?.findIndex(dateData => dateData.month === month)]?.available_dates.map(value => ({ label: value, value })) ?? []}
+                        onChange={(date) => onChange({ date })} />
+                    <Dropdown lite id="dropdown-departure-month" labelClassName="text-center block" value={month}
+                        options={dates.data?.map(dateData => ({ label: dayjs().month(dateData.month - 1).format("MMMM"), value: dateData.month })) ?? []}
+                        onChange={(month) => onChange({ month })} />
+                    <Dropdown lite id="dropdown-departure-year" labelClassName="text-center block" value={year}
+                        options={Array.from({ length: 5 }, (_, index) => ({ label: dayjs().year() + index, value: dayjs().year() + index }))}
+                        onChange={(year) => onChange({ year })} />
+                </Else>
+            </If>
         </div>
     </CustomInput>
 }

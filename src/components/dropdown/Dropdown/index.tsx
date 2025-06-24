@@ -60,11 +60,11 @@ const Dropdown = <Value,>({
     const verticalPosition = position.split(" ")[0];
     const horizontalPosition = position.split(" ")[1];
 
-    const classNameLabel = `bg-white w-full flex gap-2 justify-between items-center p-4 cursor-pointer whitespace-nowrap`;
+    const classNameLabel = `bg-white w-full min-w-fit flex gap-2 justify-between items-center border-b border-base-border/50 p-4 cursor-pointer whitespace-nowrap`;
 
     const classNamePanel = useMemo(() => {
         return tw(
-            `z-50 absolute z-10 flex flex-col w-full max-h-[20rem] rounded overflow-auto shadow`,
+            `z-50 absolute z-10 flex flex-col w-full min-w-fit max-h-[20rem] rounded overflow-auto shadow`,
             horizontalPosition === "center" && `left-1/2 -translate-x-1/2`,
             horizontalPosition === "left" && `left-0`,
             horizontalPosition === "right" && `right-0`,

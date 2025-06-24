@@ -13,14 +13,14 @@ import { Else, If, Then } from "react-if";
 
 
 interface Props {
-
+    onClick: () => void
 }
 
-const MainContent: React.FC<Props> = ({ }) => {
+const MainContent: React.FC<Props> = ({ onClick }) => {
     const chooseFlightStore = useChooseFlightStore()
     const { date, month, year, passenger, origin, destination, arabAirport, isRoundTrip } = chooseFlightStore
 
-    const dates = useGetDates()
+    const dates = useGetDates({ year })
 
     const onSwitchDestination = () => {
         useChooseFlightStore.setState({ origin: destination, destination: origin, arabAirport: arabAirport === "arrival" ? "departure" : "arrival" })
@@ -57,9 +57,7 @@ const MainContent: React.FC<Props> = ({ }) => {
             <PassengerInput passenger={passenger} onChange={(passenger) => useChooseFlightStore.setState({ passenger: Number(passenger) })} />
             <ClassInput />
         </div>
-        <Link href="/choose_flight">
-            <Button className="w-full h-12 mt-5">Search</Button>
-        </Link>
+        <Button className="w-full h-12 mt-5" onClick={onClick}>Search</Button>
     </div>
 }
 
