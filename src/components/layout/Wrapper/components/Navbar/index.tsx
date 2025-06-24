@@ -77,10 +77,10 @@ const Navbar: React.FC<NavbarProps> = ({ user, transparent, className }) => {
                 <Link href="/">Home</Link>
                 <Link href="/about">About</Link>
                 <Link href="/contact">Contact</Link>
-                <Link href="/my_flight">My Flight</Link>
-                <Link href="/transaction_history">Transaction History</Link>
                 <If condition={!!user}>
                     <Then>
+                        <Link href="/my_flight">My Flight</Link>
+                        <Link href="/transaction_history">Transaction History</Link>
                         <Button onClick={onLogout}>Logout</Button>
                     </Then>
                     <Else>
