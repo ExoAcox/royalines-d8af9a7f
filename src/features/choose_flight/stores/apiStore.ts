@@ -1,5 +1,6 @@
-import { GetAirports, getAirports, getDates, GetDates, getFlightSchedules, GetFlightSchedules, checkoutFlight, CheckoutFlight } from "@api/flights";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { getDates, GetDates, getFlightSchedules, GetFlightSchedules } from "@api/flights";
+import { GetAirports, getAirports, } from "@api/airports"
+import { useQuery } from "@tanstack/react-query";
 
 
 

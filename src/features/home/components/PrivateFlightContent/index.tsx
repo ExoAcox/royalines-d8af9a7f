@@ -20,7 +20,6 @@ const MainContent: React.FC<Props> = ({ onClick }) => {
     const chooseFlightStore = useChooseFlightStore()
     const { date, month, year, passenger, origin, destination, arabAirport, isRoundTrip } = chooseFlightStore
 
-    const dates = useGetDates({ year })
 
     const onSwitchDestination = () => {
         useChooseFlightStore.setState({ origin: destination, destination: origin, arabAirport: arabAirport === "arrival" ? "departure" : "arrival" })
