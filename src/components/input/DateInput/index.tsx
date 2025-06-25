@@ -45,10 +45,10 @@ const DateInput: React.FC<Props> = ({ date, month, year, onChange }) => {
                 </Then>
                 <Else>
                     <Dropdown lite id="dropdown-departure-date" labelClassName="text-center block" value={date}
-                        options={dates.data?.[dates.data?.findIndex(dateData => dateData.month === month)]?.available_dates.map(value => ({ label: value, value })) ?? [{ label: "-", value: "" }]}
+                        options={dates.data?.[dates.data?.findIndex(dateData => dateData.month === month)]?.available_dates.map(value => ({ label: value, value })) ?? [{ label: "-", value: 0 }]}
                         onChange={(date) => onChange({ date })} />
                     <Dropdown lite id="dropdown-departure-month" labelClassName="text-center block" value={month}
-                        options={dates.data?.map(dateData => ({ label: dayjs().month(dateData.month - 1).format("MMMM"), value: dateData.month })) ?? [{ label: "-", value: "" }]}
+                        options={dates.data?.map(dateData => ({ label: dayjs().month(dateData.month - 1).format("MMMM"), value: dateData.month })) ?? [{ label: "-", value: 0 }]}
                         onChange={(month) => onChange({ month })} />
                     <Dropdown lite id="dropdown-departure-year" labelClassName="text-center block" value={year}
                         options={Array.from({ length: 5 }, (_, index) => ({ label: dayjs().year() + index, value: dayjs().year() + index }))}
