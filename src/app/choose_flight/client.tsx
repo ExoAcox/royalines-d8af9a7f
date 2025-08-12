@@ -1,7 +1,7 @@
 "use client"
 
 import { FlightSchedule } from "@api/flights";
-import { Responsive, Wrapper } from "@components/layout"
+import { Error, NotFound, Responsive, Wrapper } from "@components/layout"
 import { Spinner } from "@components/loader";
 import { FlightCard, FlightHeader, SearchFlightModal, SelectAirportModal, SideFilter } from "@features/choose_flight/components"
 import { useGetFlightSchedules } from "@features/choose_flight/stores/apiStore";
@@ -11,7 +11,7 @@ import { useRouterEvent } from "@hooks/useRouter";
 import dayjs from "dayjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { When } from "react-if";
+import { Case, Switch, When } from "react-if";
 
 
 
@@ -56,18 +56,23 @@ const ChooseFlight: React.FC<Page> = ({ user }) => {
             <div className="flex-1 p-8">
                 <FlightHeader data={chooseFlightStore} />
                 <div className="mt-6 flex flex-col gap-4">
-                    <When condition={flightSchedules.isPending}>
-                        <Spinner className="py-24" size={100} />
-                    </When>
-                    <When condition={flightSchedules.isSuccess}>
-                        {flightSchedules.data?.map(flightSchedule => {
-                            return <FlightCard key={flightSchedule.flight_schedule_id} data={flightSchedule} onClick={() => navigate(flightSchedule)} />
-                        })}
+                    <Switch>
+                        <Case condition={flightSchedules.isPending}>
+                            <Spinner className="py-24" size={100} />
+                        </Case>
+                        <Case condition={flightSchedules.isError}>
+                            <Error error={flightSchedules.error?.message} className="py-24" />
+                        </Case>
+                        <Case condition={flightSchedules.isSuccess && !flightSchedules.data?.length}>
+                            <NotFound className="py-24" />
+                        </Case>
+                        <Case condition={flightSchedules.isSuccess && flightSchedules.data?.length}>
+                            {flightSchedules.data?.map(flightSchedule => {
+                                return <FlightCard key={flightSchedule.flight_schedule_id} data={flightSchedule} onClick={() => navigate(flightSchedule)} />
+                            })}
 
-                    </When>
-                    <When condition={flightSchedules.isError}>
-                        {flightSchedules.error?.message}
-                    </When>
+                        </Case>
+                    </Switch>
                 </div>
             </div>
         </Responsive>

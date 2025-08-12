@@ -1,3 +1,4 @@
+import { Airport } from "@api/airports";
 import { create } from "zustand"
 
 export const indoAirports = [{
@@ -46,7 +47,7 @@ const defaultChooseFlightStore = {
     date: 1,
     month: 12,
     year: 2025,
-    class: "Economy",
+    class: "economy",
     arabAirport: "arrival" as const,
     isRoundTrip: false,
     flightIdOutbound: null,

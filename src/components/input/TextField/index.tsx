@@ -14,6 +14,7 @@ export interface TextField extends BasicInput {
     prefix?: React.ReactNode;
     suffix?: React.ReactNode;
     onkeyDown?: (value: string) => void;
+    onFocus?: (target: EventTarget) => void;
     required?: boolean;
 }
 
@@ -33,7 +34,8 @@ const TextField: React.FC<TextField> = ({
     suffix,
     error,
     required,
-    onkeyDown
+    onkeyDown,
+    onFocus
 }) => {
     const inputProps = { value, placeholder, type, disabled };
 
@@ -58,6 +60,9 @@ const TextField: React.FC<TextField> = ({
                     }}
                     onKeyDown={(e) => {
                         if (onkeyDown) onkeyDown(e.key);
+                    }}
+                    onFocus={(e) => {
+                        if (onFocus) onFocus(e.target);
                     }}
                     {...controller}
                     {...inputProps}

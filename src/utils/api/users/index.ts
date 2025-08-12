@@ -70,8 +70,8 @@ export const refreshToken = (token: string): Promise<LoginResponse> => {
 
     return new Promise((resolve, reject) => {
         axios
-            .post(`${API_URL}/${API_VERSION}/users/refresh`, {}, {
-                headers: { Authorization: token },
+            .post(`${API_URL}/${API_VERSION}/token/refresh`, {}, {
+                headers: header(token),
                 signal: refreshController.signal,
                 skipAuthRefresh: true,
             })
@@ -79,6 +79,7 @@ export const refreshToken = (token: string): Promise<LoginResponse> => {
                 resolve(response.data.data);
             })
             .catch((error) => {
+                console.log(error)
                 catchHelper(reject, error);
             });
     });

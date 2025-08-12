@@ -1,6 +1,6 @@
 "use client"
 
-import { Responsive, Wrapper } from "@components/layout"
+import { Error, Responsive, Wrapper } from "@components/layout"
 import { BottomBar, SeatPicker, SeatSidebar, TopBar } from "@features/choose_seat/components";
 import { useEffect, useMemo, useState } from "react";
 import { produce } from "immer"
@@ -90,6 +90,9 @@ const ChooseSeat: React.FC<Page> = ({ user }) => {
             <div className="flex-1 overflow-scroll">
                 <When condition={availableSeats.isPending}>
                     <Spinner className="pt-24" size={156} />
+                </When>
+                <When condition={availableSeats.isError}>
+                    <Error className="pt-24" error={availableSeats.error?.message} />
                 </When>
                 <When condition={availableSeats.isSuccess}>
                     <Responsive className="p-0 flex">

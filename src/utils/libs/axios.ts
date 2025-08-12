@@ -54,8 +54,8 @@ axiosInstance.interceptors.response.use(
 
             return new Promise((resolve) => {
                 axiosInstance
-                    .post(`${API_URL}/${API_VERSION}/users/refresh`, {}, {
-                        headers: { Authorization: token },
+                    .post(`${API_URL}/${API_VERSION}/token/refresh`, {}, {
+                        headers: { Authorization: `Bearer ${token}` },
                         skipAuthRefresh: true,
                     })
                     .then((response) => {
@@ -77,6 +77,7 @@ axiosInstance.interceptors.response.use(
                     })
                     .catch((error) => {
                         console.warn(error);
+                        console.log("token expired")
                         // logout()
                     })
                     .finally(() => {

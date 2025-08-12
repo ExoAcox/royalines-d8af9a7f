@@ -13,7 +13,7 @@ const NotFound: React.FC<Props> = ({
     subtitle = "Please check your search for any typos or spelling errors, or try a different search term.",
     className
 }) => {
-    return <div className={tw("flex flex-col gap-1 items-center", className)}>
+    return <div className={tw("flex-center flex-col gap-1", className)}>
         <Image src={Illustration} alt="Not found" />
         <span className="font-bold text-center mt-2">{title}</span>
         <p className="text-center text-grey-70 text-sm">

@@ -43,21 +43,14 @@ const SelectAirportModal: React.FC<Props> = ({ onSelect }) => {
             <TextField className="w-[50.75rem]" parentClassName="mb-6" placeholder="City, Airport..." value={search} onChange={(value) => setSearch(value)} />
             <Switch>
                 <Case condition={airports.isFetching}>
-                    <div className="h-[12rem] mb-8 flex-center">
-                        <Spinner size={76} />
-                    </div>
-
+                    <Spinner size={76} className="h-48 mb-8" />
                 </Case>
                 <Case condition={airports.isError}>
-                    <div className="h-[12rem] mb-8 flex-center">
-                        <Error error={airports.error?.message} />
-                    </div>
+                    <Error error={airports.error?.message} className="h-48 mb-8" />
 
                 </Case>
                 <Case condition={airports.isSuccess && !airports.data?.length}>
-                    <div className="h-[12rem] mb-8 flex-center">
-                        <NotFound />
-                    </div>
+                    <NotFound className="h-48 mb-8" />
                 </Case>
                 <Case condition={airports.isSuccess && airports.data?.length}>
                     <AirportList airports={airports.data!} onSelect={() => setModal(false)}>Search Result</AirportList>

@@ -27,9 +27,10 @@ const Login: React.FC<Page> = ({ }) => {
         e?.preventDefault()
 
         try {
-            routerChange()
             const user = await login.mutateAsync(input)
             await signIn("credentials", { ...user, redirect: false })
+
+            routerChange()
             router.replace("/")
         } catch (error) {
             toast.error((error as FetchError)?.message)

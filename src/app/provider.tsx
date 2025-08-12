@@ -2,12 +2,14 @@
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import NProgress from "nprogress";
-import { Suspense, useCallback } from "react";
+import { Suspense, useCallback, useEffect } from "react";
 
 import queryClient from "@libs/react-query";
 
 import RouterEventProvider from "@hooks/useRouter";
 import { SessionProvider } from "next-auth/react";
+import { getCookie } from "cookies-next";
+import { refreshToken } from "@api/users";
 
 NProgress.configure({ showSpinner: false });
 

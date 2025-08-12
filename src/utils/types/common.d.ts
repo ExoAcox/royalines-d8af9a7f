@@ -1,10 +1,3 @@
-interface Data<Value> {
-    data: Value;
-    status: DataStatus;
-    error?: DataError | null;
-}
-type SetData<Value> = (data: Data<Value>) => void;
-
 type FetchError = {
     message?: string;
     code?: number;
@@ -51,13 +44,4 @@ interface Server {
     params: Promise<{
         lang: Locale;
     }>;
-}
-
-
-interface Airport {
-    airport_id: number;
-    airport_name: string;
-    airport_iata: string;
-    city: string;
-    country: string
 }
