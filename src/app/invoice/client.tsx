@@ -143,13 +143,13 @@ const InvoiceClient: React.FC<Props> = ({ }) => {
                         <span>{data?.aircraftCharter ?? ""}</span>
                     </div>
                     <span className="font-bold">Route</span>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-4 -mt-1">
                         {data?.route.map((route: any, index: number) => {
-                            return <div className="flex flex-col" key={index}>
-                                <span className="flex items-center gap-2"><div className="bg-black rounded-full size-1" />{route.destination}</span>
-                                <span className="ml-3"><b>Departure date:</b> {dayjs(route.date).format("YYYY-MM-DD")}</span>
-                                <span className="ml-3">{dayjs(route.date).format("HH:mm:ss")} UTC+7</span>
-                            </div>
+                            return <ul className="flex flex-col list-disc pl-8" key={index}>
+                                <li>{route.destination}</li>
+                                <span><b>Departure date:</b> {dayjs(route.date).format("YYYY-MM-DD")}</span>
+                                <span>{dayjs(route.date).format("HH:mm:ss")} UTC+7</span>
+                            </ul>
                         })}
 
                     </div>
@@ -158,7 +158,7 @@ const InvoiceClient: React.FC<Props> = ({ }) => {
                         <span>{data?.passenger ?? 1}</span>
                     </div>
                     <span className="font-bold">Included:</span>
-                    <ul className="list-disc pl-8">
+                    <ul className="list-disc pl-8 -mt-1">
                         <li>Passenger insurance</li>
                         <li>In-flight catering</li>
                         <li>Landing & parking</li>
@@ -180,7 +180,7 @@ const InvoiceClient: React.FC<Props> = ({ }) => {
                     <span>{formatRupiah(totalPrice)}</span>
                 </div>
             </div>
-            <div className="mt-8 flex flex-col gap-2">
+            <div className="mt-4 flex flex-col gap-2">
                 <div className="flex justify-between">
                     <span>Subtotal</span>
                     <span>{formatRupiah(totalPrice)}</span>
