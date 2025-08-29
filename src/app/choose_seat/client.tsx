@@ -67,7 +67,8 @@ const ChooseSeat: React.FC<Page> = ({ user }) => {
     }
 
     const handleSubmit = async () => {
-        const seats = passengers.map(passenger => availableSeats.data!.seats.find(seat => seat.seat_number === passenger.seat)!.flight_seat_id)
+        const seats = passengers.map(passenger => availableSeats.data!.seats.find(seat => seat.seat_number === passenger.seat)?.flight_seat_id ?? 1)
+
 
         try {
             await checkoutFlight.mutateAsync({

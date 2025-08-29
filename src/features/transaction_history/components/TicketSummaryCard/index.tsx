@@ -17,7 +17,7 @@ const SummaryCard: React.FC<Props> = ({ }) => {
             </div>
         </div>
         <div className="flex gap-6 p-6 bg-white">
-            <div className="w-[5.375rem] h-[5.375rem] bg-red-400 shrink-0" />
+            <div className="w-[5.375rem] h-[5.375rem] bg-green-200 shrink-0 rounded" />
             <div className="flex flex-col gap-2 justify-center w-full">
                 <label className="text-black font-semibold">Booking Code</label>
                 <button className="border border-grey-60 rounded-lg py-2 px-3 flex justify-between items-center">
@@ -45,7 +45,7 @@ const SummaryCard: React.FC<Props> = ({ }) => {
                         Rp 540.000
                     </span>
                 </div>
-                <span className="font-2xs text-grey-80">2%</span>
+                <span className="text-2xs text-grey-80">2%</span>
                 <div className="flex justify-between items-center text-sm">
                     <span className="font-bold">
                         Total Amount Paid

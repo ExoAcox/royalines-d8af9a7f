@@ -12,6 +12,7 @@ interface Props {
 
 }
 
+
 const TripSummary: React.FC<Props> = ({ }) => {
 
 

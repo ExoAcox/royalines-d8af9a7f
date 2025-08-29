@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import Provider from "./provider";
 import { tw } from "@functions/style";
 import { refreshToken } from "@api/users";
+import { setCookie } from "cookies-next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,9 +38,14 @@ const RootLayout: React.FC<Props> = async ({ children, params }) => {
     try {
       console.log(token.value)
       const data = await refreshToken(token.value)
+<<<<<<< Updated upstream
       console.log(data)
       cookieStore.set(process.env.NEXT_PUBLIC_TOKEN_KEY, data.access_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
       cookieStore.set(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY, data.refresh_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
+=======
+      setCookie(process.env.NEXT_PUBLIC_TOKEN_KEY, data.access_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
+      setCookie(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY, data.refresh_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
+>>>>>>> Stashed changes
 
       await signIn("credentials", { ...data, redirect: false })
     } catch (error) {

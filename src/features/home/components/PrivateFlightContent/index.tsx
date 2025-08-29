@@ -5,6 +5,7 @@ import { ClassInput, FlightInput, PassengerInput, DateInput } from "@components/
 import { Link } from "@components/navigation";
 import { useGetDates } from "@features/choose_flight/stores/apiStore";
 import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
+import { useState } from "react";
 import { BiSolidToggleLeft, BiSolidToggleRight } from "react-icons/bi";
 import { GoArrowSwitch } from "react-icons/go";
 import { Else, If, Then } from "react-if";
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const MainContent: React.FC<Props> = ({ onClick }) => {
+    const [isClicked, setClicked] = useState(false)
     const chooseFlightStore = useChooseFlightStore()
     const { date, month, year, passenger, origin, destination, arabAirport, isRoundTrip } = chooseFlightStore
 
@@ -56,7 +58,10 @@ const MainContent: React.FC<Props> = ({ onClick }) => {
             <PassengerInput passenger={passenger} onChange={(passenger) => useChooseFlightStore.setState({ passenger: Number(passenger) })} />
             <ClassInput />
         </div>
-        <Button className="w-full h-12 mt-5" onClick={onClick}>Search</Button>
+        <Button className="w-full h-12 mt-5" loading={isClicked} onClick={() => {
+            onClick()
+            setClicked(true)
+        }}>Search</Button>
     </div>
 }
 

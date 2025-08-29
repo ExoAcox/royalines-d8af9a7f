@@ -1,4 +1,5 @@
 import { ActionButton, BookingBadge } from "@components/button"
+import { Link } from "@components/navigation"
 import { Table, TableHeader, TableBody } from "@components/table"
 import { useRouterEvent } from "@hooks/useRouter"
 import { useRouter } from "next/navigation"
@@ -71,16 +72,24 @@ const TableContent: React.FC<Props> = ({ }) => {
             flight.bookingCode,
             <span className="text-blue-600 font-bold">{flight.flightStatus}</span>,
             flight.flightCode,
+<<<<<<< Updated upstream
             <p className="text-grey-70">{flight.flightRouteFrom} -<br />{flight.flightRouteTo}</p>,
             <span className="text-grey-70">flight.departure</span>,
             <p className="text-grey-70">{flight.paid}/<br />{flight.paid}</p>,
             <BookingBadge color={flight.ticketStatus} />,
             <div className="flex flex-col gap-1 items-center">
+=======
+            <p className="text-grey-70" key={flight.bookingCode}>{flight.flightRouteFrom} -<br />{flight.flightRouteTo}</p>,
+            <span className="text-grey-70" key={flight.bookingCode}>{flight.departure}</span>,
+            <p className="text-grey-70" key={flight.bookingCode}>{flight.paid}/<br />{flight.paid}</p>,
+            <BookingBadge color={flight.ticketStatus} key={flight.bookingCode} />,
+            <div className="flex flex-col gap-1 items-center" key={flight.bookingCode}>
+>>>>>>> Stashed changes
                 <ActionButton type="fill_passenger" onClick={() => {
                     routerChange()
                     router.push("/choose_seat")
                 }} />
-                <ActionButton type="view_receipt" />
+                <Link href="/transaction_history/52188823546"><ActionButton type="view_receipt" /></Link>
             </div>
         ]
 

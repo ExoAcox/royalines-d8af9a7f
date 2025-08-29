@@ -3,6 +3,7 @@ import { AirlineInfoCard, FlightInfoCard } from "@components/card";
 
 import { MdCalendarMonth } from "react-icons/md";
 import { FaRegCopy } from "react-icons/fa6";
+import { Link } from "@components/navigation";
 
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const TransactionCard: React.FC<Props> = ({ }) => {
+
     return <div className="p-4 flex flex-col bg-white shadow-xs rounded-2xl">
         <div className="flex gap-4 pb-2 items-center justify-between">
             <div className="flex flex-col gap-1">
@@ -43,7 +45,7 @@ const TransactionCard: React.FC<Props> = ({ }) => {
                 <label className="text-black text-sm font-bold">Total Amount Paid</label>
                 <span className="text-lg font-semibold text-primary">Rp 13.770.000</span>
             </div>
-            <Button className="h-8 w-36 text-xs" variant="ghost">View Detail</Button>
+            <Link href={`/transaction_history/52188823546`} ><Button className="h-8 w-36 text-xs" variant="ghost">View Detail</Button></Link>
             <Button className="h-8 w-36 text-xs">Request a Refund</Button>
         </div>
     </div>

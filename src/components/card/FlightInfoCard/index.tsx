@@ -16,7 +16,19 @@ interface Props {
     className?: string;
 }
 
-const FlightInfoCard: React.FC<Props> = ({ className, departureTime, arrivalTime, originAirport, destinationAirport }) => {
+
+
+const FlightInfoCard: React.FC<Props> = ({ className, departureTime, arrivalTime, originAirport = {
+    airport_id: 1,
+    airport_name: "Soekarno-Hatta International Airport",
+    airport_iata: "CGK",
+    local_timezone: "Asia/Jakarta",
+}, destinationAirport = {
+    airport_id: 2,
+    airport_name: "Ngurah Rai International Airport",
+    airport_iata: "DPS",
+    local_timezone: "Asia/Makassar",
+} }) => {
 
     const formatDate = (date?: string) => {
         return dayjs(date).format('dddd, DD MMM YYYY')
@@ -28,7 +40,7 @@ const FlightInfoCard: React.FC<Props> = ({ className, departureTime, arrivalTime
             <span className="text-xs">{`${originAirport?.airport_name} (${originAirport?.airport_iata})`}</span>
             <span className="text-2xs text-grey-80">{formatDate(departureTime)}</span>
         </div>
-        <div className="flex-1 flex flex-col text-grey-70 text-xs items-center gap-1 w-28">
+        <div className="flex-1 flex flex-col text-grey-70 text-xs items-center gap-1 min-w-28">
             <span>{getEstimatedTime(departureTime!, arrivalTime!)}</span>
             <div className="relative w-full">
                 <div className="w-full h-[1px] bg-grey-80 -translate-y-[0px]" />
