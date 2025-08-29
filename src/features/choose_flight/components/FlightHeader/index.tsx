@@ -2,7 +2,7 @@ import { FaPlaneDeparture, FaArrowRight } from "react-icons/fa6"
 
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
-import { ChooseFlightStore, useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
+import { ChooseFlightStore } from "@features/choose_flight/stores/dataStore";
 import { Button } from "@components/button";
 
 import { LuArrowDownUp } from "react-icons/lu";

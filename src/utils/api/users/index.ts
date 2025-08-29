@@ -79,7 +79,6 @@ export const refreshToken = (token: string): Promise<LoginResponse> => {
                 resolve(response.data.data);
             })
             .catch((error) => {
-                console.log(error)
                 catchHelper(reject, error);
             });
     });

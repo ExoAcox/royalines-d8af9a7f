@@ -2,8 +2,6 @@ import { Button } from "@components/button"
 
 
 import { ClassInput, FlightInput, PassengerInput, DateInput } from "@components/input";
-import { Link } from "@components/navigation";
-import { useGetDates } from "@features/choose_flight/stores/apiStore";
 import { useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
 import { BiSolidToggleLeft, BiSolidToggleRight } from "react-icons/bi";
 import { GoArrowSwitch } from "react-icons/go";

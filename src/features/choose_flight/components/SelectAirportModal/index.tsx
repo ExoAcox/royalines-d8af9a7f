@@ -7,7 +7,7 @@ import AirportList from "./components/AirportList";
 import { arabAirports, indoAirports, useChooseFlightStore } from "@features/choose_flight/stores/dataStore";
 import { useMemo, useState } from "react";
 import { useGetAirports } from "@features/choose_flight/stores/apiStore";
-import { Case, Default, Switch } from "react-if";
+import { Case, Switch } from "react-if";
 import { Spinner } from "@components/loader";
 
 
@@ -15,7 +15,7 @@ interface Props {
     onSelect: (data: { airport: object, type?: string }) => void;
 }
 
-const SelectAirportModal: React.FC<Props> = ({ onSelect }) => {
+const SelectAirportModal: React.FC<Props> = ({ }) => {
     const [search, setSearch] = useState("")
     const { modal, setModal, data } = useModal<{ type: string }>("select-airport-modal")
     const arabAirport = useChooseFlightStore(data => data.arabAirport)

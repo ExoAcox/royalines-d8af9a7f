@@ -15,6 +15,11 @@ interface Props {
 
 }
 
+interface Route {
+    destination: string
+    date: string
+}
+
 interface Data {
     billTo: string;
     phone: number;
@@ -26,10 +31,7 @@ interface Data {
     quantity: number;
     passenger: number;
     price: number;
-    route: {
-        destination: string
-        date: string
-    }[]
+    route: Route[]
 }
 
 function formatRupiah(number: number) {
@@ -73,7 +75,7 @@ const InvoiceClient: React.FC<Props> = ({ }) => {
     const searchParams = useSearchParams();
     const rawData = searchParams.get("data");
 
-    const data = useMemo(() => {
+    const data: Data = useMemo(() => {
         if (rawData) {
             return JSON.parse(decodeURIComponent(rawData));
         } else {
@@ -143,7 +145,7 @@ const InvoiceClient: React.FC<Props> = ({ }) => {
                 </div>
                 <span className="font-bold">Route</span>
                 <div className="flex flex-col gap-4 -mt-1">
-                    {data?.route.map((route: any, index: number) => {
+                    {data?.route?.map((route, index) => {
                         return <ul className="flex flex-col list-disc pl-8" key={index}>
                             <li>{route.destination}</li>
                             <span><b>Departure date:</b> {dayjs(route.date).format("YYYY-MM-DD")}</span>

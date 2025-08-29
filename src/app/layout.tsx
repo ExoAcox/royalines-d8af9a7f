@@ -2,7 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import "nprogress/nprogress.css";
 import { cookies } from 'next/headers'
-import { signIn, signOut } from "@libs/auth"
+import { signIn } from "@libs/auth"
 
 
 import { ToastContainer } from 'react-toastify';
@@ -29,21 +29,19 @@ interface Props {
   }>;
 }
 
-const RootLayout: React.FC<Props> = async ({ children, params }) => {
+const RootLayout: React.FC<Props> = async ({ children }) => {
   const cookieStore = await cookies()
   const token = cookieStore.get(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY)
 
   if (token) {
     try {
-      console.log(token.value)
       const data = await refreshToken(token.value)
-      console.log(data)
       cookieStore.set(process.env.NEXT_PUBLIC_TOKEN_KEY, data.access_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
       cookieStore.set(process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY, data.refresh_token, { maxAge: 60 * 60 * 365, sameSite: "strict" });
 
       await signIn("credentials", { ...data, redirect: false })
     } catch (error) {
-      console.log(error)
+      console.warn(error)
     }
 
   }

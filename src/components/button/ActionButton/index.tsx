@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useMemo } from "react";
 import Button from "../Button"
 
@@ -48,8 +49,6 @@ const ActionButton: React.FC<Props> = ({ type, onClick, onEdit, onDelete, id }) 
 
 
     const content = useMemo(() => {
-
-
         switch (type) {
             case "fill_passenger":
                 return <><PiAddressBook className={iconClassName} /> Fill Passengers</>;

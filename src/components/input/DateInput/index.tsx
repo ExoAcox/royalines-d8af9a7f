@@ -7,9 +7,9 @@ import { useGetDates } from "@features/choose_flight/stores/apiStore";
 import { Else, If, Then } from "react-if";
 import { Spinner } from "@components/loader";
 import { useEffect } from "react";
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(localeData);
-const customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs().localeData();
 dayjs.extend(customParseFormat);
 

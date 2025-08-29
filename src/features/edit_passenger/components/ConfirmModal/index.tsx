@@ -16,7 +16,7 @@ interface Props {
 }
 
 const ConfirmModal: React.FC<Props> = ({ id, title, children, buttons }) => {
-    const { modal, data } = useModal(id);
+    const { modal } = useModal(id);
 
     return <Modal visible={modal} className="!mt-24 !max-w-[27.5rem]">
         <h4 className="text-center">{title}</h4>

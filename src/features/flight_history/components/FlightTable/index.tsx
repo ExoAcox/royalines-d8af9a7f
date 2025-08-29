@@ -69,13 +69,13 @@ const TableContent: React.FC<Props> = ({ }) => {
     const tableBody = flights.map((flight) => {
         const data = [
             flight.bookingCode,
-            <span className="text-blue-600 font-bold">{flight.flightStatus}</span>,
+            <span className="text-blue-600 font-bold" key={flight.bookingCode}>{flight.flightStatus}</span>,
             flight.flightCode,
-            <p className="text-grey-70">{flight.flightRouteFrom} -<br />{flight.flightRouteTo}</p>,
-            <span className="text-grey-70">flight.departure</span>,
-            <p className="text-grey-70">{flight.paid}/<br />{flight.paid}</p>,
-            <BookingBadge color={flight.ticketStatus} />,
-            <div className="flex flex-col gap-1 items-center">
+            <p className="text-grey-70" key={flight.bookingCode}>{flight.flightRouteFrom} -<br />{flight.flightRouteTo}</p>,
+            <span className="text-grey-70" key={flight.bookingCode}>flight.departure</span>,
+            <p className="text-grey-70" key={flight.bookingCode}>{flight.paid}/<br />{flight.paid}</p>,
+            <BookingBadge color={flight.ticketStatus} key={flight.bookingCode} />,
+            <div className="flex flex-col gap-1 items-center" key={flight.bookingCode}>
                 <ActionButton type="fill_passenger" onClick={() => {
                     routerChange()
                     router.push("/choose_seat")

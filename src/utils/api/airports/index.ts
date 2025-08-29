@@ -1,4 +1,4 @@
-import { axios, catchHelper, header } from "@libs/axios";
+import { axios, catchHelper } from "@libs/axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 const API_VERSION = process.env.NEXT_PUBLIC_API_VERSION

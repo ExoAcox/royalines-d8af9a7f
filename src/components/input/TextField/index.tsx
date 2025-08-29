@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { tw } from "@functions/style";
 
 import { LabelInput, ErrorInput, ExampleInput } from "@components/text";
-import { Else, If, Then, When } from "react-if";
+import { Else, If, Then } from "react-if";
 
 export interface TextField extends BasicInput {
     value?: string | number;
