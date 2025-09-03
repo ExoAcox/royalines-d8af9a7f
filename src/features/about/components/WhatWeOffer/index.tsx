@@ -2,7 +2,6 @@ import { Responsive } from "@components/layout"
 import Image, { StaticImageData } from "next/image";
 
 import IconPlane from "@images/bitmap/icon-plane-big.png"
-import IconBaggage from "@images/bitmap/icon-baggage-big.png"
 import IconHotel from "@images/bitmap/icon-hotel-big.png"
 import IconVisa from "@images/bitmap/icon-visa-big.png"
 import IconCs from "@images/bitmap/icon-cs-big.png"

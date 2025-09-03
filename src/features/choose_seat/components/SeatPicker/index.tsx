@@ -6,7 +6,7 @@ import Image from "next/image"
 import { When } from "react-if"
 
 import PlaneHead from "@images/bitmap/plane-head.png"
-import { AvailableSeats, FlightSeatLayout } from "@api/flights"
+import { AvailableSeats } from "@api/flights"
 
 interface BoxProps {
     occupied: boolean;
@@ -47,8 +47,6 @@ const SeatPicker: React.FC<Props> = ({ seats, passengers, onSeatSelect, passenge
 
     const seatLayouts = seats.flight_seat_layout
     const occupiedSeats = seats.seats.filter(seat => seat.seat_status === "locked").map(seat => seat.seat_number)
-
-    console.log(occupiedSeats)
 
     const handleSeatSelect = (seatId: string) => {
         if (passengerChoosenId) onSeatSelect(seatId)
@@ -94,8 +92,6 @@ const SeatPicker: React.FC<Props> = ({ seats, passengers, onSeatSelect, passenge
 
                                             const isOccupied = occupiedSeats.includes(seatId)
                                             const isSelected = passengers.findIndex(passenger => passenger.seat === seatId) + 1
-
-                                            console.log(isOccupied, seatId)
 
                                             return <Box key={cellIndex} onClick={() => handleSeatSelect(seatId)} occupied={isOccupied} selected={isSelected} />
                                         })}

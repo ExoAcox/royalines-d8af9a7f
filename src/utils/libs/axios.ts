@@ -1,5 +1,5 @@
 import { logout } from "@features/login/functions";
-import axiosInstance, { AxiosBasicCredentials } from "axios";
+import axiosInstance from "axios";
 import { getCookie, setCookie } from "cookies-next";
 
 declare module "axios" {
@@ -77,8 +77,7 @@ axiosInstance.interceptors.response.use(
                     })
                     .catch((error) => {
                         console.warn(error);
-                        console.log("token expired")
-                        // logout()
+                        logout()
                     })
                     .finally(() => {
                         isRefreshing = false;

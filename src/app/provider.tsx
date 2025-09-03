@@ -2,14 +2,12 @@
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import NProgress from "nprogress";
-import { Suspense, useCallback, useEffect } from "react";
+import { Suspense, useCallback } from "react";
 
 import queryClient from "@libs/react-query";
 
 import RouterEventProvider from "@hooks/useRouter";
 import { SessionProvider } from "next-auth/react";
-import { getCookie } from "cookies-next";
-import { refreshToken } from "@api/users";
 
 NProgress.configure({ showSpinner: false });
 
@@ -36,7 +34,7 @@ const Provider: React.FC<ProvidersProps> = ({ children }) => {
         onStartProgress();
     }, []);
 
-    const onComplete = useCallback((pathname: string | null) => {
+    const onComplete = useCallback(() => {
         onCompleteProgress();
         scrollToTop();
     }, []);

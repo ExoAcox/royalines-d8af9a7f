@@ -1,6 +1,6 @@
 "use server";
 
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
 // import { UAParser } from "ua-parser-js";
 
 export const getDevice = async () => {
@@ -8,8 +8,8 @@ export const getDevice = async () => {
         throw new Error("[Server method] you are importing a server-only module outside of server");
     }
 
-    const { get } = await headers();
-    const ua = get("user-agent");
+    // const { get } = await headers();
+    // const ua = get("user-agent");
 
     // const device = new UAParser(ua || "").getDevice();
 

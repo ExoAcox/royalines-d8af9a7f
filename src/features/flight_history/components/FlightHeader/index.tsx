@@ -12,7 +12,7 @@ interface Props {
     onClick: (value: ActiveTab) => void
 }
 
-const FlightHeader: React.FC<Props> = ({ activeTab, onClick }) => {
+const FlightHeader: React.FC<Props> = ({ activeTab }) => {
 
     const activeClassName = "text-grey-90 border-b-2 border-primary relative z-[2]"
 

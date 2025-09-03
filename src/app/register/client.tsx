@@ -2,7 +2,6 @@
 
 import { Button } from "@components/button"
 import { PasswordField, TextField } from "@components/input"
-import { Link } from "@components/navigation"
 import { LoginWrapper } from "@features/login/components"
 import { useRouterEvent } from "@hooks/useRouter"
 import { useRouter } from "next/navigation"

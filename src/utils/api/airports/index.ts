@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-import { axios, catchHelper, header } from "@libs/axios";
-=======
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { axios, catchHelper } from "@libs/axios";
->>>>>>> Stashed changes
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 const API_VERSION = process.env.NEXT_PUBLIC_API_VERSION

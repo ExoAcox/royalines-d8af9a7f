@@ -32,7 +32,7 @@ interface UserRole {
     CreatedAt: string;
     UpdatedAt: string;
     DeletedAt: string | null;
-    UserRoles: any;
+    UserRoles: object;
 }
 
 interface Page {

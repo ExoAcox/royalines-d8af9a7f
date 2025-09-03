@@ -6,7 +6,7 @@ import useRipple from "use-ripple-hook";
 import { tw } from "@functions/style";
 
 import { Spinner } from "@components/loader";
-import { Else, If, Then, When } from "react-if";
+import { When } from "react-if";
 
 interface Button {
     children?: React.ReactNode;
@@ -31,7 +31,7 @@ const getColor = (color: string) => {
     }
 };
 
-const getVariant = (variant: string, color: string) => {
+const getVariant = (variant: string) => {
     switch (variant) {
         case "ghost":
             return `bg-white`;
@@ -63,7 +63,7 @@ const Button: React.FC<Button> = ({
             tw(
                 `flex group shrink-0 font-semibold items-center justify-center gap-2 whitespace-nowrap relative rounded-lg border w-fit h-fit px-3.5 py-2 overflow-hidden`,
                 getColor(color),
-                getVariant(variant, color),
+                getVariant(variant),
                 loading && "!cursor-wait",
                 className
             ),

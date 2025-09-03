@@ -7,9 +7,9 @@ import { useGetDates } from "@features/choose_flight/stores/apiStore";
 import { Else, If, Then } from "react-if";
 import { Spinner } from "@components/loader";
 import { useEffect } from "react";
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(localeData);
-const customParseFormat = require('dayjs/plugin/customParseFormat');
 dayjs().localeData();
 dayjs.extend(customParseFormat);
 
@@ -38,7 +38,7 @@ const DateInput: React.FC<Props> = ({ date, month, year, onChange }) => {
 
 
     return <CustomInput Icon={MdEditCalendar} label="Departure date">
-        <div className="w-fit gap-2 flex mt-2 font-medium">
+        <div className="w-fit gap-2 flex mt-2 h-9 font-medium">
             <If condition={dates.isPending}>
                 <Then>
                     <Spinner />

@@ -87,23 +87,6 @@ export const refreshToken = (token: string): Promise<LoginResponse> => {
     if (refreshController) refreshController.abort();
     refreshController = new AbortController();
 
-<<<<<<< Updated upstream
-    return new Promise((resolve, reject) => {
-        axios
-            .post(`${API_URL}/${API_VERSION}/token/refresh`, {}, {
-                headers: header(token),
-                signal: refreshController.signal,
-                skipAuthRefresh: true,
-            })
-            .then((response) => {
-                resolve(response.data.data);
-            })
-            .catch((error) => {
-                console.log(error)
-                catchHelper(reject, error);
-            });
-    });
-=======
     // return new Promise((resolve, reject) => {
     //     axios
     //         .post(`${API_URL}/${API_VERSION}/token/refresh`, {}, {
@@ -134,7 +117,6 @@ export const refreshToken = (token: string): Promise<LoginResponse> => {
             UserRoles: {},
         }]
     })
->>>>>>> Stashed changes
 };
 
 

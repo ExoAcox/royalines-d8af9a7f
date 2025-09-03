@@ -45,7 +45,7 @@ const HomeClient: React.FC<Page> = ({ user }) => {
             </div>
             <Footer />
 
-            <SelectAirportModal onSelect={(data) => console.log(data.airport)} />
+            <SelectAirportModal onSelect={() => null} />
         </Wrapper>
     );
 };

@@ -1,8 +1,6 @@
-import { ActionButton, BookingBadge } from "@components/button"
+import { ActionButton } from "@components/button"
 import { Table, TableHeader, TableBody } from "@components/table"
 import useModal from "@hooks/useModal"
-import { useRouterEvent } from "@hooks/useRouter"
-import { useRouter } from "next/navigation"
 
 
 
@@ -72,7 +70,7 @@ const TableContent: React.FC<Props> = ({ hideAction }) => {
             passenger.passport,
             passenger.passportCountry,
             passenger.expired,
-            <div className="flex flex-col gap-1 items-center">
+            <div className="flex flex-col gap-1 items-center" key={index}>
                 <ActionButton id={`passenger-action-${index}`} type="edit_passenger" onEdit={() => setData(passenger)} onDelete={() => {
                     deleteConfirmModal.setModal(true)
                 }} />

@@ -15,6 +15,11 @@ interface Props {
 
 }
 
+interface Route {
+    destination: string
+    date: string
+}
+
 interface Data {
     billTo: string;
     phone: number;
@@ -26,10 +31,7 @@ interface Data {
     quantity: number;
     passenger: number;
     price: number;
-    route: {
-        destination: string
-        date: string
-    }[]
+    route: Route[]
 }
 
 function formatRupiah(number: number) {
@@ -73,7 +75,7 @@ const InvoiceClient: React.FC<Props> = ({ }) => {
     const searchParams = useSearchParams();
     const rawData = searchParams.get("data");
 
-    const data = useMemo(() => {
+    const data: Data = useMemo(() => {
         if (rawData) {
             return JSON.parse(decodeURIComponent(rawData));
         } else {
@@ -87,123 +89,119 @@ const InvoiceClient: React.FC<Props> = ({ }) => {
     const finalPrice = totalPrice + tax
 
 
-    return <div className="bg-[#DDE7EE] py-12 ">
-        <div className="mx-auto bg-white max-w-[1028px] flex flex-col py-8 px-9 rounded-xl shadow-lg">
-            <div className="flex mb-8">
-                <div className="flex items-center px-8">
-                    <Image src={Logo} alt="logo" className="w-[100px] h-[51px]" />
+    return <div className="mx-auto bg-white flex flex-col text-sm">
+        <div className="flex mb-8 gap-12">
+            <div className="flex items-center ml-12">
+                <Image src={Logo} alt="logo" className="w-[100px] h-[51px]" />
+            </div>
+            <div className="flex flex-col gap-3 text-xs">
+                <label className="text-lg font-bold">Royal Jet Aviation</label>
+                <p>Jalan Arjuna Utara 28 Kav 11, Desa/Kelurahan Tanjung Duren Selatan<br />
+                    Kec. Grogol Petamburan, Kota Adm. Jakarta Barat, Provinsi DKI Jakarta</p>
+                <div className="flex gap-12">
+                    <div className="flex items-center gap-2"><SlPhone className="fill-blue-400" />+62 852-2442-1212</div>
+                    <div className="flex items-center gap-2"><TfiEmail className="fill-blue-400" />admin@royaljetaviation.com</div>
                 </div>
-                <div className="flex flex-col gap-3 text-sm">
-                    <h5>Royal Jet Aviation</h5>
-                    <p>Jalan Arjuna Utara 28 Kav 11, Desa/Kelurahan Tanjung Duren Selatan<br />
-                        Kec. Grogol Petamburan, Kota Adm. Jakarta Barat, Provinsi DKI Jakarta</p>
-                    <div className="flex gap-12">
-                        <div className="flex items-center gap-2"><SlPhone className="fill-blue-400 translate-y-[1px]" />+62 852-2442-1212</div>
-                        <div className="flex items-center gap-2"><TfiEmail className="fill-blue-400 translate-y-[1px]" />admin@royaljetaviation.com</div>
+            </div>
+        </div>
+        <div className="flex mb-6 justify-between">
+            <div className="flex flex-col gap-2 mr-auto">
+                <label className="font-bold text-lg">Bill To:</label>
+                <span className="font-bold text-base">{data?.billTo ?? ""}</span>
+                <div className="flex gap-x-8 text-xs flex-wrap gap-y-4">
+                    <div className="flex items-center gap-2 text-nowrap"><SlPhone className="fill-blue-400 " /> {formatPhone(data?.phone)}</div>
+                    <div className="flex items-center gap-2 text-nowrap"><TfiEmail className="fill-blue-400" />{data?.email ?? ""}</div>
+                </div>
+            </div>
+            <div className="flex flex-col">
+                <label className="font-bold flex-1 text-lg">Invoice</label>
+                <div className="flex gap-8">
+                    <div className="flex flex-col">
+                        <label className="font-bold">No Invoice</label>
+                        <span className="text-xs text-nowrap">{data?.invoiceNumber ?? ""}</span>
+                    </div>
+                    <div className="flex flex-col">
+                        <label className="font-bold">Date</label>
+                        <span className="text-xs text-nowrap">{dayjs(data?.date).format("MMM DD, YYYY")}</span>
+                    </div>
+                    <div className="flex flex-col">
+                        <label className="font-bold">Due Date</label>
+                        <span className="text-xs text-nowrap">{dayjs(data?.dueDate).format("MMM DD, YYYY")}</span>
                     </div>
                 </div>
             </div>
-            <div className="flex gap-32 mb-8">
-                <div className="flex flex-col gap-2">
-                    <label className="font-bold text-lg">Bill To:</label>
-                    <span className="font-bold">{data?.billTo ?? ""}</span>
-                    <div className="flex gap-12 text-sm">
-                        <div className="flex items-center gap-2"><SlPhone className="fill-blue-400  translate-y-[1px]" /> {formatPhone(data?.phone)}</div>
-                        <div className="flex items-center gap-2"><TfiEmail className="fill-blue-400 translate-y-[1px]" />{data?.email ?? ""}</div>
-                    </div>
+        </div>
+        <label className="pt-4 font-bold text-lg border-t mb-4">Description of Services</label>
+        <div className="flex justify-between text-xs">
+            <div className="flex flex-col gap-4">
+                <span className="text-base">Item No</span>
+                <span>1</span>
+            </div>
+            <div className="flex flex-col gap-4">
+                <span className="text-base">Description</span>
+                <div className="flex flex-col">
+                    <span className="font-bold">Aircraft Charter:</span>
+                    <span>{data?.aircraftCharter ?? ""}</span>
+                </div>
+                <span className="font-bold">Route</span>
+                <div className="flex flex-col gap-4 -mt-1">
+                    {data?.route?.map((route, index) => {
+                        return <ul className="flex flex-col list-disc pl-8" key={index}>
+                            <li>{route.destination}</li>
+                            <span><b>Departure date:</b> {dayjs(route.date).format("YYYY-MM-DD")}</span>
+                            <span>{dayjs(route.date).format("HH:mm:ss")} UTC+7</span>
+                        </ul>
+                    })}
+
                 </div>
                 <div className="flex flex-col">
-                    <label className="font-bold flex-1 text-lg">Invoice</label>
-                    <div className="flex gap-12">
-                        <div className="flex flex-col">
-                            <label className="font-bold">No Invoice</label>
-                            <span className="text-sm">{data?.invoiceNumber ?? ""}</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-bold">Date</label>
-                            <span className="text-sm">{dayjs(data?.date).format("MMM DD, YYYY")}</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-bold">Due Date</label>
-                            <span className="text-sm">{dayjs(data?.dueDate).format("MMM DD, YYYY")}</span>
-                        </div>
-                    </div>
+                    <span className="font-bold">Passenger:</span>
+                    <span>{data?.passenger ?? 1}</span>
                 </div>
+                <span className="font-bold">Included:</span>
+                <ul className="list-disc pl-8 -mt-1">
+                    <li>Passenger insurance</li>
+                    <li>In-flight catering</li>
+                    <li>Landing & parking</li>
+                    <li>Handling fees</li>
+                    <li>Fuel surcharge</li>
+                    <li>Crew fees</li>
+                </ul>
             </div>
-            <h5 className="pt-8 border-t mb-4">Description of Services</h5>
-            <div className="bg-[#F1F5F8] py-4 px-5">
-                <div className="flex justify-between text-sm">
-                    <div className="flex flex-col gap-4">
-                        <span className="text-base">Item No</span>
-                        <span>1</span>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                        <span className="text-base">Description</span>
-                        <div className="flex flex-col">
-                            <span className="font-bold">Aircraft Charter:</span>
-                            <span>{data?.aircraftCharter ?? ""}</span>
-                        </div>
-                        <span className="font-bold">Route</span>
-                        <div className="flex flex-col">
-                            {data?.route.map((route: any, index: number) => {
-                                return <div className="flex flex-col" key={index}>
-                                    <span className="flex items-center gap-2"><div className="bg-black rounded-full size-1" />{route.destination}</span>
-                                    <span className="ml-3"><b>Departure date:</b> {dayjs(route.date).format("YYYY-MM-DD")}</span>
-                                    <span className="ml-3">{dayjs(route.date).format("HH:mm:ss")} UTC+7</span>
-                                </div>
-                            })}
-
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="font-bold">Passenger:</span>
-                            <span>{data?.passenger ?? 1}</span>
-                        </div>
-                        <span className="font-bold">Included:</span>
-                        <ul className="list-disc pl-8">
-                            <li>Passenger insurance</li>
-                            <li>In-flight catering</li>
-                            <li>Landing & parking</li>
-                            <li>Handling fees</li>
-                            <li>Fuel surcharge</li>
-                            <li>Crew fees</li>
-                        </ul>
-                    </div>
-                    <div className="flex flex-col text-right gap-4">
-                        <span className="text-base">Quantity</span>
-                        <span>{data?.quantity ?? 1}</span>
-                    </div>
-                    <div className="flex flex-col text-right gap-4">
-                        <span className="text-base">Unit Price (IDR)</span>
-                        <span>{formatRupiah(price)}</span>
-                    </div>
-                    <div className="flex flex-col text-right gap-4">
-                        <span className="text-base">Total (IDR)</span>
-                        <span>{formatRupiah(totalPrice)}</span>
-                    </div>
-                </div>
-                <div className="mt-8 flex flex-col gap-2">
-                    <div className="flex justify-between">
-                        <span>Subtotal</span>
-                        <span>{formatRupiah(totalPrice)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span>Tax (11%)</span>
-                        <span>{formatRupiah(tax)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span>Total amount</span>
-                        <span>{formatRupiah(finalPrice)}</span>
-                    </div>
-                </div>
+            <div className="flex flex-col text-right gap-4">
+                <span className="text-base">Quantity</span>
+                <span>{data?.quantity ?? 1}</span>
             </div>
-            <h5 className="my-4">Notes</h5>
-            <ul className="list-disc pl-8">
-                <li>Payment due within 7 days from invoice date unless otherwise agreed.</li>
-                <li>Cancellation fees apply as per charter agreement terms.</li>
-                <li>Payments made via payment gateway may be subject to additional processing fees.</li>
-                <li>For assistance, contact our Agent at +62 852-2442-1212 or admin@royaljetaviation.com</li>
-            </ul>
+            <div className="flex flex-col text-right gap-4">
+                <span className="text-base">Unit Price (IDR)</span>
+                <span>{formatRupiah(price)}</span>
+            </div>
+            <div className="flex flex-col text-right gap-4">
+                <span className="text-base">Total (IDR)</span>
+                <span>{formatRupiah(totalPrice)}</span>
+            </div>
         </div>
+        <div className="mt-4 flex flex-col gap-2">
+            <div className="flex justify-between">
+                <span>Subtotal</span>
+                <span>{formatRupiah(totalPrice)}</span>
+            </div>
+            <div className="flex justify-between">
+                <span>Tax (11%)</span>
+                <span>{formatRupiah(tax)}</span>
+            </div>
+            <div className="flex justify-between">
+                <span>Total amount</span>
+                <span>{formatRupiah(finalPrice)}</span>
+            </div>
+        </div>
+        <label className="my-4 font-bold text-lg">Notes</label>
+        <ul className="list-disc pl-8">
+            <li>Payment due within 7 days from invoice date unless otherwise agreed.</li>
+            <li>Cancellation fees apply as per charter agreement terms.</li>
+            <li>Payments made via payment gateway may be subject to additional processing fees.</li>
+            <li>For assistance, contact our Agent at +62 852-2442-1212 or admin@royaljetaviation.com</li>
+        </ul>
     </div>
 }
 

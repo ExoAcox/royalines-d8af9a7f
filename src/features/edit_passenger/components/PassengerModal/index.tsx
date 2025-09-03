@@ -13,7 +13,7 @@ interface Props {
 }
 
 const PassengerModal: React.FC<Props> = ({ id }) => {
-    const { modal, setModal, data } = useModal(id);
+    const { modal } = useModal(id);
     const cancelConfirmModal = useModal("cancel-confirm-modal")
 
     const close = () => cancelConfirmModal.setModal(true)
