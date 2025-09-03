@@ -57,6 +57,8 @@ const ChooseSeat: React.FC<Page> = ({ user }) => {
             draft[passengerIndex].seat = seatId
         })
 
+        setPassengers(passengers_)
+
         const emptyIndex = passengers_.findIndex(passenger => !passenger.seat)
         if (emptyIndex >= 0) {
             setPassengerChoosenId(passengers[emptyIndex].id)
